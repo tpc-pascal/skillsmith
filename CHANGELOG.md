@@ -7,6 +7,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 ## [Unreleased]
 
 - `orchestrator`: diagram generation via session skill `archify` (tt-a1i/archify, MIT, requires Node) — CLI-generated workflow/sequence/ERD/tree/timeline diagrams + one-page explainers with a `candidate.json` verify loop; replaces the previous guidance-only `diagram-design`.
+- `doc`: data methodology via session skills `exploratory-data-analysis`, `statistical-analysis`, `matplotlib` from K-Dense-AI/scientific-agent-skills (EDA checks, statistical test selection, standard charts — run with local pandas/matplotlib).
 
 ## [v0.1.0] - 2026-10-20
 
