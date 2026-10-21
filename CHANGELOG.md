@@ -9,6 +9,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 - `orchestrator`: diagram generation via session skill `archify` (tt-a1i/archify, MIT, requires Node) — CLI-generated workflow/sequence/ERD/tree/timeline diagrams + one-page explainers with a `candidate.json` verify loop; replaces the previous guidance-only `diagram-design`.
 - `doc`: data methodology via session skills `exploratory-data-analysis`, `statistical-analysis`, `matplotlib` from K-Dense-AI/scientific-agent-skills (EDA checks, statistical test selection, standard charts — run with local pandas/matplotlib).
 - `media`: YouTube transcript summaries via local `yt-dlp`/whisper (dropped session skill `youtube-summarizer` — duplicate routing already covered by `watch`).
+- `web`: HTML/one-pager design-quality gate via session skill `taste-skill` (MIT), plus the `impeccable` design-language session skill (pbakaus/impeccable, Apache-2.0) for system UI, plus research workflow session skills `deep-research` (Anthropic official harness from asgeirtj/system_prompts_leaks, CC0 — fan-out/dedup/adversarial verify; replaces the prose AAS `deep-research-framework`), `last30days` (mvanhorn, MIT — signal discovery for research breadth), `efficient-web-research`, `wiki-researcher` (agentic-awesome-skills).
 
 ## [v0.1.0] - 2026-10-20
 
