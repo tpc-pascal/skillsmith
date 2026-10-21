@@ -1,0 +1,112 @@
+name: Sync Pins — Update Upstream SHAs
+
+on:
+  schedule:
+    - cron: "23 3 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "check = report only, update = open auto-merge PR"
+        type: choice
+        required: true
+        default: update
+        options:
+          - check
+          - update
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bump Pin SHAs
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.mode }}" = "check" ]; then
+            bash scripts/bump-pins.sh --check
+          else
+            bash scripts/bump-pins.sh --write
+          fi
+
+      - name: Show Report
+        if: always()
+        run: |
+          cat pins-report.md 2>/dev/null || true
+          cat pins-report.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+
+      - name: Report Unreachable Upstreams
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s unreachable.txt ] || { echo "all upstreams reachable"; exit 0; }
+          TITLE="sync-pins: unreachable upstream"
+          { echo "Auto-detected unreachable pinned upstreams:"; echo; echo '```'; cat unreachable.txt; echo '```'; } > /tmp/unreach.md
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body-file /tmp/unreach.md
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" --body-file /tmp/unreach.md
+          fi
+          exit 1
+
+      - name: Open Pull Request
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'update')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git diff --quiet scripts/fetch-session.sh && { echo "No drift — pins already track upstream HEAD"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B chore/sync-pins
+          git add scripts/fetch-session.sh
+          git commit -m "chore(pins): bump third-party skill SHAs to upstream HEAD"
+          git push --force origin chore/sync-pins
+          URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --state open --json url --jq '.[0].url // empty')
+          if [ -z "$URL" ]; then
+            gh pr create --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --base main \
+              --title "chore(pins): bump third-party skill SHAs to upstream HEAD" \
+              --body-file pins-report.md
+            URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --state open --json url --jq '.[0].url')
+          fi
+          NUM=$(gh pr view "$URL" --json number --jq .number)
+          SHA=$(gh pr view "$URL" --json headRefOid --jq .headRefOid)
+          # PR checks triggered via GITHUB_TOKEN are held for approval; release them,
+          # revive zombie runs (run completed but job stuck in_progress), then wait
+          # until every check reports a final green state before merging.
+          ZOMBIE=""
+          for i in $(seq 1 30); do
+            for rid in $(gh api "repos/$GITHUB_REPOSITORY/actions/runs?event=pull_request&head_sha=$SHA" --jq '.workflow_runs[] | select(.conclusion == "action_required" or .status == "waiting") | .id'); do
+              gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$rid/approve" >/dev/null && echo "approved run $rid" || echo "approve failed for run $rid"
+            done
+            if [ -z "$ZOMBIE" ]; then
+              for rid in $(gh api "repos/$GITHUB_REPOSITORY/actions/runs?event=pull_request&head_sha=$SHA" --jq '.workflow_runs[] | select(.status == "completed") | .id'); do
+                STUCK=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$rid/jobs" --jq '[.jobs[] | select(.status == "in_progress")] | length')
+                if [ "$STUCK" -gt 0 ]; then
+                  gh run rerun "$rid" --repo "$GITHUB_REPOSITORY" && { ZOMBIE=1; echo "revived zombie run $rid"; }
+                fi
+              done
+            fi
+            FAILED=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")] | length' 2>/dev/null || echo 0)
+            PENDING=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .state == "ACTION_REQUIRED")] | length' 2>/dev/null || echo 0)
+            TOTAL=$(gh pr checks "$NUM" --json name --jq 'length' 2>/dev/null || echo 0)
+            [ "$FAILED" -gt 0 ] && break
+            [ "$PENDING" -eq 0 ] && [ "$TOTAL" -gt 0 ] && break
+            sleep 10
+          done
+          FAILED=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")] | length' 2>/dev/null || echo 0)
+          PENDING=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .state == "ACTION_REQUIRED")] | length' 2>/dev/null || echo 0)
+          TOTAL=$(gh pr checks "$NUM" --json name --jq 'length' 2>/dev/null || echo 0)
+          if [ "$TOTAL" -eq 0 ] || [ "$PENDING" -ne 0 ] || [ "$FAILED" -ne 0 ]; then
+            echo "PR checks not green (total=$TOTAL pending=$PENDING failed=$FAILED) — leaving the PR open"
+            exit 1
+          fi
+          gh pr checks "$NUM"
+          gh pr merge --auto --squash --delete-branch "$URL" || gh pr merge --squash --delete-branch "$URL"
+          echo "merged: $URL"

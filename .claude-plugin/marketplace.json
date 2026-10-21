@@ -1,0 +1,25 @@
+{
+  "name": "skillsmith",
+  "owner": {
+    "name": "tpc-pascal"
+  },
+  "metadata": {
+    "description": "Agent skill collection for research workflows",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "research",
+      "description": "Research skills: orchestrator, doc, media, web, paper",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/research/orchestrator",
+        "./skills/research/doc",
+        "./skills/research/media",
+        "./skills/research/web",
+        "./skills/research/paper"
+      ]
+    }
+  ]
+}
