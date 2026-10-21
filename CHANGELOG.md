@@ -6,6 +6,8 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `orchestrator`: diagram generation via session skill `archify` (tt-a1i/archify, MIT, requires Node) — CLI-generated workflow/sequence/ERD/tree/timeline diagrams + one-page explainers with a `candidate.json` verify loop; replaces the previous guidance-only `diagram-design`.
+
 ## [v0.1.0] - 2026-10-20
 
 Initial release of the restarted repository: the `research` collection, its installation paths for the three supported tools, and the full release and contribution tooling.
