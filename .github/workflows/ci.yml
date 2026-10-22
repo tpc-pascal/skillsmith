@@ -1,4 +1,4 @@
-name: ci
+name: CI — Lint & Test
 on:
   push:
   pull_request:

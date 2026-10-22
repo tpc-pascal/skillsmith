@@ -4,6 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 echo "== checking bash syntax"
+bash -n scripts/bump-pins.sh
 bash -n scripts/fetch-session.sh
 bash -n scripts/smoke.sh
 bash -n scripts/install.sh

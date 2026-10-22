@@ -1,4 +1,4 @@
-name: Publish version release
+name: Release — Publish from Changelog
 on:
   push:
     tags: ['v*']
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Create release from the CHANGELOG section
+      - name: Create Release from the CHANGELOG Section
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
