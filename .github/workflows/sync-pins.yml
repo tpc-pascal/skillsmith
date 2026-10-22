@@ -90,6 +90,13 @@ jobs:
             [ "$PENDING" -eq 0 ] && [ "$TOTAL" -gt 0 ] && break
             sleep 10
           done
-          gh pr checks "$NUM" --fail-fast || { echo "PR checks did not pass — leaving the PR open"; exit 1; }
+          FAILED=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")] | length' 2>/dev/null || echo 0)
+          PENDING=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .state == "ACTION_REQUIRED")] | length' 2>/dev/null || echo 0)
+          TOTAL=$(gh pr checks "$NUM" --json name --jq 'length' 2>/dev/null || echo 0)
+          if [ "$TOTAL" -eq 0 ] || [ "$PENDING" -ne 0 ] || [ "$FAILED" -ne 0 ]; then
+            echo "PR checks not green (total=$TOTAL pending=$PENDING failed=$FAILED) — leaving the PR open"
+            exit 1
+          fi
+          gh pr checks "$NUM"
           gh pr merge --auto --squash --delete-branch "$URL" || gh pr merge --squash --delete-branch "$URL"
           echo "merged: $URL"
