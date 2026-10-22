@@ -78,11 +78,21 @@ jobs:
           NUM=$(gh pr view "$URL" --json number --jq .number)
           SHA=$(gh pr view "$URL" --json headRefOid --jq .headRefOid)
           # PR checks triggered via GITHUB_TOKEN are held for approval; release them,
-          # then wait until every check reports a final state before merging.
+          # revive zombie runs (run completed but job stuck in_progress), then wait
+          # until every check reports a final green state before merging.
+          ZOMBIE=""
           for i in $(seq 1 30); do
             for rid in $(gh api "repos/$GITHUB_REPOSITORY/actions/runs?event=pull_request&head_sha=$SHA" --jq '.workflow_runs[] | select(.conclusion == "action_required" or .status == "waiting") | .id'); do
               gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$rid/approve" >/dev/null && echo "approved run $rid" || echo "approve failed for run $rid"
             done
+            if [ -z "$ZOMBIE" ]; then
+              for rid in $(gh api "repos/$GITHUB_REPOSITORY/actions/runs?event=pull_request&head_sha=$SHA" --jq '.workflow_runs[] | select(.status == "completed") | .id'); do
+                STUCK=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$rid/jobs" --jq '[.jobs[] | select(.status == "in_progress")] | length')
+                if [ "$STUCK" -gt 0 ]; then
+                  gh run rerun "$rid" --repo "$GITHUB_REPOSITORY" && { ZOMBIE=1; echo "revived zombie run $rid"; }
+                fi
+              done
+            fi
             FAILED=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")] | length' 2>/dev/null || echo 0)
             PENDING=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .state == "ACTION_REQUIRED")] | length' 2>/dev/null || echo 0)
             TOTAL=$(gh pr checks "$NUM" --json name --jq 'length' 2>/dev/null || echo 0)
