@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "check = report only, update = open auto-merge PR"
+        description: "check = report only, update = bump SHAs and push to main"
         type: choice
         required: true
         default: update
@@ -16,7 +16,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
   issues: write
 
 jobs:
@@ -55,24 +54,13 @@ jobs:
           fi
           exit 1
 
-      - name: Open Pull Request
+      - name: Push Bumps to main
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'update')
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           git diff --quiet scripts/fetch-session.sh && { echo "No drift — pins already track upstream HEAD"; exit 0; }
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B chore/sync-pins
           git add scripts/fetch-session.sh
           git commit -m "chore(pins): bump third-party skill SHAs to upstream HEAD"
-          git push --force origin chore/sync-pins
-          URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --state open --json url --jq '.[0].url // empty')
-          if [ -z "$URL" ]; then
-            gh pr create --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --base main \
-              --title "chore(pins): bump third-party skill SHAs to upstream HEAD" \
-              --body-file pins-report.md
-            URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --state open --json url --jq '.[0].url')
-          fi
-          gh pr merge --auto --squash --delete-branch "$URL"
-          echo "auto-merge armed: $URL"
+          git push origin HEAD:main
+          echo "pushed bump commit to main"
