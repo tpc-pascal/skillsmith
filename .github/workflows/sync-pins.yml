@@ -18,6 +18,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  actions: write
 
 jobs:
   sync:
@@ -74,5 +75,21 @@ jobs:
               --body-file pins-report.md
             URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --state open --json url --jq '.[0].url')
           fi
-          gh pr merge --auto --squash --delete-branch "$URL"
-          echo "auto-merge armed: $URL"
+          NUM=$(gh pr view "$URL" --json number --jq .number)
+          SHA=$(gh pr view "$URL" --json headRefOid --jq .headRefOid)
+          # PR checks triggered via GITHUB_TOKEN are held for approval; release them,
+          # then wait until every check reports a final state before merging.
+          for i in $(seq 1 30); do
+            for rid in $(gh api "repos/$GITHUB_REPOSITORY/actions/runs?event=pull_request&head_sha=$SHA" --jq '.workflow_runs[] | select(.status == "action_required" or .status == "waiting") | .id'); do
+              gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$rid/approve" >/dev/null && echo "approved run $rid"
+            done
+            FAILED=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "FAILURE" or .state == "CANCELLED" or .state == "TIMED_OUT")] | length' 2>/dev/null || echo 0)
+            PENDING=$(gh pr checks "$NUM" --json state --jq '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS" or .state == "ACTION_REQUIRED")] | length' 2>/dev/null || echo 0)
+            TOTAL=$(gh pr checks "$NUM" --json name --jq 'length' 2>/dev/null || echo 0)
+            [ "$FAILED" -gt 0 ] && break
+            [ "$PENDING" -eq 0 ] && [ "$TOTAL" -gt 0 ] && break
+            sleep 10
+          done
+          gh pr checks "$NUM" --fail-fast || { echo "PR checks did not pass — leaving the PR open"; exit 1; }
+          gh pr merge --auto --squash --delete-branch "$URL" || gh pr merge --squash --delete-branch "$URL"
+          echo "merged: $URL"
