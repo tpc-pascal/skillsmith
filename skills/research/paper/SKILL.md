@@ -43,6 +43,8 @@ PPTX decks: `--skill ppt-master` — brief → outline → styled `.pptx`, verif
 
 Verification/writing helpers: `--skill citation-verification` (galaxy-dawn/claude-scholar, MIT — authority-order citation checking: DOI → CrossRef → Semantic Scholar → Zotero, claim-level), agentic-awesome-skills `--skill tech-writing-proofread` (itemized Original → Suggestion → Reason), `--skill write-in-my-voice` (draft in the author's existing voice), `--skill stakeholder-investor-reports` (investor/board report register), `--skill survey-generator` (source-backed survey-paper artifacts). Prose audit: `--skill avoid-ai-writing` (conorbronsdon/avoid-ai-writing, MIT — 7-skill anti-slop kit with editing contract and voice profiles; run together with the prose sweep in `references/ai-writing-tells.md` + `references/slop-scoring.md`), `--skill humanizer` (blader/humanizer, MIT — pattern catalogue and rewrite moves for removing AI writing tells).
 
+Academic research & review pipeline: `--skill academic-paper`, `--skill academic-paper-reviewer`, `--skill academic-pipeline`, `--skill academic-deep-research`, `--skill sr-screener` (Imbad0202/academic-research-skills, CC-BY-NC-4.0 — 12-agent writing pipeline, 5-seat reviewer panel, and protocol-driven study screening).
+
 ## references
 
 Citation formats: [`citation-styles.md`](references/citation-styles.md). Source credibility: [`source-assessment.md`](references/source-assessment.md). Synthesis: [`synthesis.md`](references/synthesis.md). Reporting principles: [`reporting-principles-sources.md`](references/reporting-principles-sources.md). Natural prose: [`ai-writing-tells.md`](references/ai-writing-tells.md) + [`slop-scoring.md`](references/slop-scoring.md) — sweep against both before delivering.

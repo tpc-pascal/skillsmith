@@ -37,6 +37,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 | `survey-generator` | sickn33/agentic-awesome-skills | survey papers for `paper` (MIT) |
 | `avoid-ai-writing` | conorbronsdon/avoid-ai-writing | prose audit / AI-ism removal for `paper` (MIT) |
 | `humanizer` | blader/humanizer | rewrite AI-sounding prose and remove AI writing tells for `paper` (MIT) |
+| `academic-paper`, `academic-paper-reviewer`, `academic-pipeline`, `academic-deep-research`, `sr-screener` | Imbad0202/academic-research-skills | academic writing pipeline, review, and screening for `paper` (CC-BY-NC-4.0) |
 
 ## Install
 

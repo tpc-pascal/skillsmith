@@ -34,6 +34,8 @@ L30_URL="https://github.com/mvanhorn/last30days-skill.git"
 L30_SHA="f3cd06a620e385ce15109ed6d3b70fc20c89eccc"
 HM_URL="https://github.com/blader/humanizer.git"
 HM_SHA="8c307f367c91bd974002f10f2be2965d642c13df"
+ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
+ARS_SHA="5a1a5a687602c79c31b1ab8603ebcf8de65a9579"
 
 # name|url|sha|skill path in the repo
 TABLE='
@@ -62,6 +64,11 @@ stakeholder-investor-reports|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-cl
 survey-generator|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/survey-generator
 avoid-ai-writing|$CB_URL|$CB_SHA|skills/avoid-ai-writing
 humanizer|$HM_URL|$HM_SHA|.
+academic-paper|$ARS_URL|$ARS_SHA|academic-paper
+academic-paper-reviewer|$ARS_URL|$ARS_SHA|academic-paper-reviewer
+academic-pipeline|$ARS_URL|$ARS_SHA|academic-pipeline
+academic-deep-research|$ARS_URL|$ARS_SHA|deep-research
+sr-screener|$ARS_URL|$ARS_SHA|sr-screener
 '
 
 OUT="" PICK=()
@@ -113,14 +120,14 @@ for name in "${PICK[@]}"; do
   url="${url//\$IM_URL/$IM_URL}"; url="${url//\$PX_URL/$PX_URL}"
   url="${url//\$TS_URL/$TS_URL}"; url="${url//\$AAS_URL/$AAS_URL}"
   url="${url//\$CB_URL/$CB_URL}"; url="${url//\$ASG_URL/$ASG_URL}"
-  url="${url//\$GD_URL/$GD_URL}"; url="${url//\$L30_URL/$L30_URL}"; url="${url//\$HM_URL/$HM_URL}"
+  url="${url//\$GD_URL/$GD_URL}"; url="${url//\$L30_URL/$L30_URL}"; url="${url//\$HM_URL/$HM_URL}"; url="${url//\$ARS_URL/$ARS_URL}"
   sha="${sha//\$CV_SHA/$CV_SHA}"; sha="${sha//\$AR_SHA/$AR_SHA}"
   sha="${sha//\$AS_SHA/$AS_SHA}"; sha="${sha//\$DL_SHA/$DL_SHA}"
   sha="${sha//\$KS_SHA/$KS_SHA}"; sha="${sha//\$AX_SHA/$AX_SHA}"
   sha="${sha//\$IM_SHA/$IM_SHA}"; sha="${sha//\$PX_SHA/$PX_SHA}"
   sha="${sha//\$TS_SHA/$TS_SHA}"; sha="${sha//\$AAS_SHA/$AAS_SHA}"
   sha="${sha//\$CB_SHA/$CB_SHA}"; sha="${sha//\$ASG_SHA/$ASG_SHA}"
-  sha="${sha//\$GD_SHA/$GD_SHA}"; sha="${sha//\$L30_SHA/$L30_SHA}"; sha="${sha//\$HM_SHA/$HM_SHA}"
+  sha="${sha//\$GD_SHA/$GD_SHA}"; sha="${sha//\$L30_SHA/$L30_SHA}"; sha="${sha//\$HM_SHA/$HM_SHA}"; sha="${sha//\$ARS_SHA/$ARS_SHA}"
   grab "$url" "$sha" "$path" "$name"
   echo "✓ $name → $OUT/$name"
 done
