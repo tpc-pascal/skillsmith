@@ -32,6 +32,8 @@ GD_URL="https://github.com/galaxy-dawn/claude-scholar.git"
 GD_SHA="d394fb599ed9e6ea2212a9e6daa864345fe97a26"
 L30_URL="https://github.com/mvanhorn/last30days-skill.git"
 L30_SHA="f3cd06a620e385ce15109ed6d3b70fc20c89eccc"
+HM_URL="https://github.com/blader/humanizer.git"
+HM_SHA="8c307f367c91bd974002f10f2be2965d642c13df"
 
 # name|url|sha|skill path in the repo
 TABLE='
@@ -59,6 +61,7 @@ write-in-my-voice|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills
 stakeholder-investor-reports|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/stakeholder-investor-reports
 survey-generator|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/survey-generator
 avoid-ai-writing|$CB_URL|$CB_SHA|skills/avoid-ai-writing
+humanizer|$HM_URL|$HM_SHA|.
 '
 
 OUT="" PICK=()
@@ -86,10 +89,19 @@ grab() { # url sha path dest
     git -C "$dir" sparse-checkout init --no-cone
     git -C "$dir" fetch -q --depth 1 origin "$sha"
   fi
-  git -C "$dir" sparse-checkout set "$path"
-  git -C "$dir" checkout -q FETCH_HEAD
-  rm -rf "$OUT/$dest"
-  cp -R "$dir/$path" "$OUT/$dest"
+  if [ "$path" = "." ] || [ -z "$path" ]; then
+    git -C "$dir" sparse-checkout set "/*"
+    git -C "$dir" checkout -q FETCH_HEAD
+    rm -rf "$OUT/$dest"
+    mkdir -p "$OUT/$dest"
+    (shopt -s dotglob; cp -R "$dir"/* "$OUT/$dest"/)
+    rm -rf "$OUT/$dest/.git"
+  else
+    git -C "$dir" sparse-checkout set "$path"
+    git -C "$dir" checkout -q FETCH_HEAD
+    rm -rf "$OUT/$dest"
+    cp -R "$dir/$path" "$OUT/$dest"
+  fi
 }
 
 for name in "${PICK[@]}"; do
@@ -101,14 +113,14 @@ for name in "${PICK[@]}"; do
   url="${url//\$IM_URL/$IM_URL}"; url="${url//\$PX_URL/$PX_URL}"
   url="${url//\$TS_URL/$TS_URL}"; url="${url//\$AAS_URL/$AAS_URL}"
   url="${url//\$CB_URL/$CB_URL}"; url="${url//\$ASG_URL/$ASG_URL}"
-  url="${url//\$GD_URL/$GD_URL}"; url="${url//\$L30_URL/$L30_URL}"
+  url="${url//\$GD_URL/$GD_URL}"; url="${url//\$L30_URL/$L30_URL}"; url="${url//\$HM_URL/$HM_URL}"
   sha="${sha//\$CV_SHA/$CV_SHA}"; sha="${sha//\$AR_SHA/$AR_SHA}"
   sha="${sha//\$AS_SHA/$AS_SHA}"; sha="${sha//\$DL_SHA/$DL_SHA}"
   sha="${sha//\$KS_SHA/$KS_SHA}"; sha="${sha//\$AX_SHA/$AX_SHA}"
   sha="${sha//\$IM_SHA/$IM_SHA}"; sha="${sha//\$PX_SHA/$PX_SHA}"
   sha="${sha//\$TS_SHA/$TS_SHA}"; sha="${sha//\$AAS_SHA/$AAS_SHA}"
   sha="${sha//\$CB_SHA/$CB_SHA}"; sha="${sha//\$ASG_SHA/$ASG_SHA}"
-  sha="${sha//\$GD_SHA/$GD_SHA}"; sha="${sha//\$L30_SHA/$L30_SHA}"
+  sha="${sha//\$GD_SHA/$GD_SHA}"; sha="${sha//\$L30_SHA/$L30_SHA}"; sha="${sha//\$HM_SHA/$HM_SHA}"
   grab "$url" "$sha" "$path" "$name"
   echo "✓ $name → $OUT/$name"
 done

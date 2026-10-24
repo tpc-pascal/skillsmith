@@ -36,6 +36,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 | `write-in-my-voice`, `stakeholder-investor-reports` | sickn33/agentic-awesome-skills | voice/business reports for `paper` (MIT) |
 | `survey-generator` | sickn33/agentic-awesome-skills | survey papers for `paper` (MIT) |
 | `avoid-ai-writing` | conorbronsdon/avoid-ai-writing | prose audit / AI-ism removal for `paper` (MIT) |
+| `humanizer` | blader/humanizer | rewrite AI-sounding prose and remove AI writing tells for `paper` (MIT) |
 
 ## Install
 
