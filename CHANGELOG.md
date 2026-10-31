@@ -6,6 +6,10 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+## [v0.1.0] - 2026-11-01
+
+### Added
+
 - `research/media`: Add session skill `watch` from `bradautomates/claude-video`, pinned by commit SHA.
 
 ## [Repository baseline] - 2026-10-20
