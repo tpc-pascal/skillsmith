@@ -71,15 +71,43 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B chore/sync-licenses
           git add LICENSE
-          git commit -m "chore(licenses): sync third-party skill declarations"
+          cat > /tmp/licenses-commit-message.txt <<'EOF'
+          chore(licenses): sync third-party skill declarations
+
+          Work done:
+          - Refresh the third-party license inventory from pinned upstream skill declarations.
+          - Include upstream license metadata or the applicable root license-file reference.
+
+          Effect:
+          - LICENSE reflects the declarations associated with the currently pinned third-party skills.
+
+          Benefits:
+          - Reviewers can inspect upstream licensing information before fetched skills are used or redistributed.
+
+          Files changed: LICENSE
+          EOF
+          git commit -F /tmp/licenses-commit-message.txt
           git push --force origin chore/sync-licenses
+          cat > /tmp/licenses-pr-body.md <<'EOF'
+          Work done:
+          - Refresh the third-party license inventory from pinned upstream skill declarations.
+          - Include upstream license metadata or the applicable root license-file reference.
+
+          Effect:
+          - LICENSE reflects the declarations associated with the currently pinned third-party skills.
+
+          Benefits:
+          - Reviewers can inspect upstream licensing information before fetched skills are used or redistributed.
+
+          Files changed: LICENSE
+          EOF
           URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-licenses --state open --json url --jq '.[0].url // empty')
           if [ -z "$URL" ]; then
             gh pr create --repo "$GITHUB_REPOSITORY" --head chore/sync-licenses --base main \
               --title "chore(licenses): sync third-party skill declarations" \
-              --body "Updates the third-party license inventory from each pinned upstream SKILL.md license declaration. Review upstream terms before merging."
+              --body-file /tmp/licenses-pr-body.md
           else
             gh pr edit "$URL" \
               --title "chore(licenses): sync third-party skill declarations" \
-              --body "Updates the third-party license inventory from each pinned upstream SKILL.md license declaration. Review upstream terms before merging."
+              --body-file /tmp/licenses-pr-body.md
           fi
