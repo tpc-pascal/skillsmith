@@ -1,0 +1,31 @@
+name: Release — Publish from Changelog
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Release from the CHANGELOG Section
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version="${GITHUB_REF_NAME}"
+          notes="$(awk -v v="$version" '
+            /^## \[/ { if (found) exit; if (index($0, "## [" v "]") == 1) { found = 1; next } }
+            found { print }
+          ' CHANGELOG.md)"
+          notes="$(printf '%s' "$notes" | sed -e '/./,$!d')"
+          if [ -z "$notes" ]; then
+            echo "CHANGELOG.md missing section ## [$version]" >&2
+            exit 1
+          fi
+          printf '%s\n' "$notes" > /tmp/version-notes.md
+          if gh release view "$version" >/dev/null 2>&1; then
+            gh release edit "$version" --title "$version" --notes-file /tmp/version-notes.md
+          else
+            gh release create "$version" --verify-tag --title "$version" --notes-file /tmp/version-notes.md
+          fi
