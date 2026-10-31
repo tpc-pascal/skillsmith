@@ -18,7 +18,7 @@ trap 'rm -rf "$WORK"' EXIT
 : >"$PART"
 : >"$UNREACH"
 
-PREFIXES=$(grep -oE '^[A-Z0-9]+_URL=' "$FETCH" | sed 's/_URL=$//')
+PREFIXES=$(sed -nE 's/^([A-Z0-9]+)_URL=".*"$/\1/p' "$FETCH")
 
 for n in $PREFIXES; do
   url=$(sed -n "s/^${n}_URL=\"\(.*\)\"$/\1/p" "$FETCH")
