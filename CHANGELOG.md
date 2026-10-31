@@ -6,6 +6,8 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/doc`: Add session skill `docling` from `docling-project/docling`, pinned by commit SHA.
+
 ## [v0.1.1] - 2026-11-01
 
 ### Added
