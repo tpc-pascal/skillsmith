@@ -21,6 +21,8 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 
 | `watch` | bradautomates/claude-video | media content summaries for `media` |
 
+| `agent-reach` | Panniantong/Agent-Reach | web, social, and search backends for `web` |
+
 ## Install
 
 ```bash

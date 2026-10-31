@@ -19,7 +19,7 @@ The repository currently ships one self-contained collection under `skills/` —
 | `research` | [`orchestrator`](skills/research/orchestrator/SKILL.md) | Identify needs and coordinate skills | — |
 |  | [`doc`](skills/research/doc/SKILL.md) | Read/convert PDF, DOCX, and XLSX | — |
 |  | [`media`](skills/research/media/SKILL.md) | Process video, audio, and images | - [bradautomates/claude-video](https://github.com/bradautomates/claude-video) — `watch` |
-|  | [`web`](skills/research/web/SKILL.md) | Read and search online sources | — |
+|  | [`web`](skills/research/web/SKILL.md) | Read and search online sources | - [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) — `agent-reach` |
 |  | [`paper`](skills/research/paper/SKILL.md) | Write international-standard or Vietnamese public-facing reports | — |
 
 Third-party skills are fetched per session via `scripts/fetch-session.sh`, never installed permanently.
