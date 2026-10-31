@@ -14,14 +14,15 @@ TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
 '
 
-OUT="" PICK=()
+OUT="" LICENSES_OUT="" PICK=()
 while [ $# -gt 0 ]; do
   case "$1" in
     --list)   awk -F'|' '$1{gsub(/ /,"",$1);print $1}' <<<"$TABLE"; exit 0 ;;
     --all)    mapfile -t PICK < <(awk -F'|' '$1{gsub(/ /,"",$1);print $1}' <<<"$TABLE") ;;
     --skill)  PICK+=("$2"); shift ;;
     --out)    OUT="$2"; shift ;;
-    *) echo "usage: $0 [--list|--all|--skill NAME] [--out DIR]" >&2; exit 2 ;;
+    --licenses-out) LICENSES_OUT="$2"; shift ;;
+    *) echo "usage: $0 [--list|--all|--skill NAME] [--out DIR] [--licenses-out DIR]" >&2; exit 2 ;;
   esac
   shift
 done
@@ -51,6 +52,16 @@ grab() { # url sha path dest
     git -C "$dir" checkout -q FETCH_HEAD
     rm -rf "$OUT/$dest"
     cp -R "$dir/$path" "$OUT/$dest"
+  fi
+  if [ -n "$LICENSES_OUT" ]; then
+    local license_dir="$LICENSES_OUT/$dest"
+    mkdir -p "$license_dir"
+    for license_file in LICENSE LICENSE.md LICENSE.txt COPYING COPYING.md COPYING.txt; do
+      rm -f -- "$license_dir/$license_file"
+      if git -C "$dir" cat-file -e "FETCH_HEAD:$license_file" 2>/dev/null; then
+        git -C "$dir" show "FETCH_HEAD:$license_file" > "$license_dir/$license_file"
+      fi
+    done
   fi
 }
 
