@@ -6,6 +6,10 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+## [v0.1.1] - 2026-11-01
+
+### Added
+
 - `research/web`: Add session skill `agent-reach` from `Panniantong/Agent-Reach`, pinned by commit SHA.
 
 ## [v0.1.0] - 2026-11-01
