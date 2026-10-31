@@ -10,7 +10,7 @@ WATCH_URL="https://github.com/bradautomates/claude-video.git"
 WATCH_SHA="03ceb42f7fa2c4439aca01752118044baabffb8f"
 
 AGENTREACH_URL="https://github.com/Panniantong/Agent-Reach.git"
-AGENTREACH_SHA=""
+AGENTREACH_SHA="14c213405669414492bda0f8d52cc6531d062c45"
 
 # name|url|sha|skill path in the repo
 TABLE='
