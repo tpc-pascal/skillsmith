@@ -28,7 +28,18 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Create Pascal Automation token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: 5495945
+          private-key: ${{ secrets.PASCAL_AUTOMATION_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: skillsmith
+
       - uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Wait for the pin sync PR
         id: pins
@@ -60,15 +71,15 @@ jobs:
       - name: Open review pull request
         if: github.event_name != 'workflow_dispatch' || inputs.mode == 'update'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           git diff --check
           if git diff --quiet -- LICENSE; then
             echo "No license changes."
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "pascal-automation-agent[bot]"
+          git config user.email "348848148+pascal-automation-agent[bot]@users.noreply.github.com"
           git checkout -B chore/sync-licenses
           git add LICENSE
           cat > /tmp/licenses-commit-message.txt <<'EOF'
