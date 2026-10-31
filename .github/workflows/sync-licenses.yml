@@ -1,0 +1,85 @@
+name: Sync Third-Party Licenses
+
+on:
+  schedule:
+    - cron: "41 4 * * 1"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "check = report drift, update = open a review PR"
+        type: choice
+        required: true
+        default: update
+        options:
+          - check
+          - update
+  push:
+    branches: [main]
+    paths:
+      - "scripts/fetch-session.sh"
+      - "scripts/sync-licenses.py"
+      - "LICENSE"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for the pin sync PR
+        id: pins
+        run: |
+          if grep -qE '^[A-Z0-9]+_SHA=""$' scripts/fetch-session.sh; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "A third-party skill is awaiting its pinned SHA; license sync will retry after the pin PR."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.pins.outputs.ready == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Install YAML parser
+        if: steps.pins.outputs.ready == 'true'
+        run: pip install pyyaml
+
+      - name: Check license declarations
+        if: steps.pins.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && inputs.mode == 'check'
+        run: python scripts/sync-licenses.py --check
+
+      - name: Update license declarations
+        if: steps.pins.outputs.ready == 'true' && (github.event_name != 'workflow_dispatch' || inputs.mode == 'update')
+        run: python scripts/sync-licenses.py --write
+
+      - name: Open review pull request
+        if: github.event_name != 'workflow_dispatch' || inputs.mode == 'update'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git diff --check
+          if git diff --quiet -- LICENSE; then
+            echo "No license changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B chore/sync-licenses
+          git add LICENSE
+          git commit -m "chore(licenses): sync third-party skill declarations"
+          git push --force origin chore/sync-licenses
+          URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-licenses --state open --json url --jq '.[0].url // empty')
+          if [ -z "$URL" ]; then
+            gh pr create --repo "$GITHUB_REPOSITORY" --head chore/sync-licenses --base main \
+              --title "chore(licenses): sync third-party skill declarations" \
+              --body "Updates the third-party license inventory from each pinned upstream SKILL.md license declaration. Review upstream terms before merging."
+          else
+            gh pr edit "$URL" \
+              --title "chore(licenses): sync third-party skill declarations" \
+              --body "Updates the third-party license inventory from each pinned upstream SKILL.md license declaration. Review upstream terms before merging."
+          fi
