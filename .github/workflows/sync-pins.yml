@@ -61,7 +61,7 @@ jobs:
           exit 1
 
       - name: Open Pull Request
-        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'update')
+        if: github.event_name == 'push' || github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'update')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -70,14 +70,48 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B chore/sync-pins
           git add scripts/fetch-session.sh
-          git commit -m "chore(pins): bump third-party skill SHAs to upstream HEAD"
+          cat > /tmp/pins-commit-message.txt <<'EOF'
+          chore(pins): bump third-party skill SHAs to upstream HEAD
+
+          Work done:
+          - Refresh third-party source pins to the latest reachable upstream commits.
+          - Validate the pinned session fetches before proposing the update.
+
+          Effect:
+          - Session skills are fetched from explicit, current upstream revisions.
+
+          Benefits:
+          - The collection receives upstream updates while keeping fetched content reproducible and reviewable.
+
+          Files changed: scripts/fetch-session.sh
+          EOF
+          git commit -F /tmp/pins-commit-message.txt
           git push --force origin chore/sync-pins
           URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --state open --json url --jq '.[0].url // empty')
+          cat > /tmp/pins-pr-body.md <<'EOF'
+          Work done:
+          - Refresh third-party source pins to the latest reachable upstream commits.
+          - Validate the pinned session fetches before proposing the update.
+
+          Effect:
+          - Session skills are fetched from explicit, current upstream revisions.
+
+          Benefits:
+          - The collection receives upstream updates while keeping fetched content reproducible and reviewable.
+
+          Files changed: scripts/fetch-session.sh
+          EOF
+          printf '\n\n' >> /tmp/pins-pr-body.md
+          cat pins-report.md >> /tmp/pins-pr-body.md
           if [ -z "$URL" ]; then
             gh pr create --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --base main \
               --title "chore(pins): bump third-party skill SHAs to upstream HEAD" \
-              --body-file pins-report.md
+              --body-file /tmp/pins-pr-body.md
             URL=$(gh pr list --repo "$GITHUB_REPOSITORY" --head chore/sync-pins --state open --json url --jq '.[0].url')
+          else
+            gh pr edit "$URL" \
+              --title "chore(pins): bump third-party skill SHAs to upstream HEAD" \
+              --body-file /tmp/pins-pr-body.md
           fi
           NUM=$(gh pr view "$URL" --json number --jq .number)
           SHA=$(gh pr view "$URL" --json headRefOid --jq .headRefOid)
