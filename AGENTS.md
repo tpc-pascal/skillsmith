@@ -1,12 +1,13 @@
 # AGENTS.md
 
-A repository collecting agent skill sets. Each collection lives under root `skills/`, is self-contained, installable on its own. Conventions for working in this repo:
+A repository collecting agent skill sets. Shared collections live under root `skills/`, are self-contained, and install independently. Conventions for working in this repo:
 
 ## Structure
 
 - Each collection lives at `<collection>/`; every skill inside has a single `SKILL.md` (English); `references/` (if present) holds supporting detail read on demand.
 - The skill list of each collection and how to install: see that collection's `README.md` (e.g. [`skills/research/README.md`](skills/research/README.md)).
 - Mandatory: every new skill collection must live under `skills/<collection>/<skill>/` — no collections at repo root. `scripts/smoke.sh` fails if any `SKILL.md` is found outside `skills/`.
+- Shared skills are the canonical source. OpenCode discovers them through `.agents/skills/`, whose entries link directly to the matching `skills/<collection>/<skill>/`. Keep the discovery links aligned with the collection sources; do not maintain duplicate skill content.
 
 ## Skill file structure
 
@@ -20,7 +21,7 @@ Length: keep `SKILL.md` lean — it loads on every session, so aim for ~45 lines
 
 ## Third-party skills
 
-- Loaded per session, never installed permanently into `~/.agents/skills/`. Use `scripts/fetch-session.sh`:
+- Loaded per session, never installed permanently into an agent's skill directory. Use `scripts/fetch-session.sh`:
 
 ```bash
 ./scripts/fetch-session.sh --list
