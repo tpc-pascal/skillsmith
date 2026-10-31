@@ -19,3 +19,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Third-party skills — NOT bundled in this repository. They are fetched into a
+temporary session directory by scripts/fetch-session.sh from their upstream
+repositories:
+
+<!-- BEGIN THIRD-PARTY SKILL LICENSES -->
+License declarations come from upstream `SKILL.md` metadata or, when absent, a root LICENSE/COPYING file at the pinned commit.
+Review the upstream terms before redistributing any fetched skill.
+
+- `watch` — https://github.com/bradautomates/claude-video at `03ceb42f7fa2c4439aca01752118044baabffb8f` — MIT
+<!-- END THIRD-PARTY SKILL LICENSES -->
