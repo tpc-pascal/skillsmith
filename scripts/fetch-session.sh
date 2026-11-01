@@ -35,6 +35,9 @@ PPT_SHA="5e8856be0da8e6bc85c4aa28acc614478f7b7137"
 AVOIDAI_URL="https://github.com/conorbronsdon/avoid-ai-writing.git"
 AVOIDAI_SHA="3af81e358f17dac2975ddd1158e9fb138a3d2f8b"
 
+HUMANIZER_URL="https://github.com/blader/humanizer.git"
+HUMANIZER_SHA="8c307f367c91bd974002f10f2be2965d642c13df"
+
 AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
 AAS_SHA="6f819e34e3847c4a9a4715409ec4d76b0ad42bdb"
 
@@ -59,6 +62,7 @@ taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
 archify|$ARCHIFY_URL|$ARCHIFY_SHA|archify
 ppt-master|$PPT_URL|$PPT_SHA|skills/ppt-master
 avoid-ai-writing|$AVOIDAI_URL|$AVOIDAI_SHA|skills/avoid-ai-writing
+humanizer|$HUMANIZER_URL|$HUMANIZER_SHA|.
 '
 
 OUT="" LICENSES_OUT="" PICK=()

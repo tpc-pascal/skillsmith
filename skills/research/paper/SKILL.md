@@ -33,11 +33,11 @@ Shared rules: [`references/output-format.md`](references/output-format.md). Extr
 
 ## DOCX and PDF export
 
-Local first: `pandoc <file>.report.md -o <file>.report.docx` or `libreoffice --headless --convert-to pdf`; complex recipes: `doc` skill ([`doc-recipes.md`](../doc/references/doc-recipes.md)). Verify with `pdfinfo` + `pdftotext`.
+Use `pandoc` for DOCX or `libreoffice --headless --convert-to pdf`; for complex cases see [`doc-recipes.md`](../doc/references/doc-recipes.md). Verify with `pdfinfo` and `pdftotext`.
 
 ## Third-party skills (fetched per session)
 
-Fetched on demand with `scripts/fetch-session.sh`.
+Fetched per session with `scripts/fetch-session.sh`.
 
 Use `citation-management` only on request; approve provider; public queries only, no
 private drafts, unapproved credentials, proxies, or rate-limit bypasses; verify metadata.
@@ -53,11 +53,11 @@ Use `ppt-master` only for requested presentations; review scripts and approve pr
 content sharing, API keys, and installs. Never read `.env`; save only to the requested
 location.
 
-Use `avoid-ai-writing` only on authorized prose; never evade detection or misrepresent
-authorship. Patterns are fallible; preserve meaning, sources, attribution, and protected
-content.
+Use `avoid-ai-writing` or `humanizer` only for requested edits to authorized prose.
+Preserve meaning, claims, sources, and attribution; never evade AI detection or misrepresent
+authorship. Treat patterns as fallible.
 
-Use `tech-writing-proofread` only on requested English technical prose. Suggest, do not
+Use `tech-writing-proofread` only on requested, authorized English technical prose. Suggest, do not
 rewrite; flag factual concerns. No external sharing without approval.
 
 Use `write-in-my-voice` only for requested posts based on authorized samples; never

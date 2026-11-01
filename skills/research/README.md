@@ -31,6 +31,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 | `tech-writing-proofread` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | English technical proofreading suggestions |
 | `write-in-my-voice` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | User-authorized social post drafting in the user's voice |
 | `stakeholder-investor-reports` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | External-reporting process advice and empty templates |
+| `humanizer` | [blader/humanizer](https://github.com/blader/humanizer) | Requested prose cleanup without altering claims or attribution |
 | `citation-verification` | [galaxy-dawn/claude-scholar](https://github.com/galaxy-dawn/claude-scholar) | Reference verification principles |
 | `avoid-ai-writing` | [conorbronsdon/avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | Optional user-authorized prose cleanup |
 | `impeccable` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Optional frontend design guidance |
