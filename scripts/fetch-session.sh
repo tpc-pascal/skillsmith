@@ -15,7 +15,7 @@ DOCLING_URL="https://github.com/docling-project/docling.git"
 DOCLING_SHA="07154cdc82500058ad9377bac92beed3de820458"
 
 CITATION_URL="https://github.com/K-Dense-AI/scientific-agent-skills.git"
-CITATION_SHA=""
+CITATION_SHA="5f2bc0341354fd5590aef76a533ada1e1e5b4e62"
 
 # name|url|sha|skill path in the repo
 TABLE='
