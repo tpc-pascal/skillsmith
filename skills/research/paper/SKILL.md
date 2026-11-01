@@ -43,11 +43,10 @@ Use `citation-management` only for requested work. Before external lookup, confi
 provider; send public bibliographic terms only, never private drafts. Do not use
 credentials or proxies without approval or bypass access limits; verify metadata.
 
-Use `litreview` only when requested. Before sending queries, screening data, or manuscript
-text externally, confirm the provider and data; default to public search terms. Review
-scripts before running them. Do not use Parallel/OpenRouter, read `.env` credentials, or
-install dependencies without explicit approval. Treat results as aids, not proof of
-systematic-review completeness; verify sources, coverage, and counts.
+Use `litreview` only when requested. Confirm provider and data before external searches;
+default to public terms. Review scripts; do not use Parallel/OpenRouter, `.env`
+credentials, or install dependencies without approval. Treat output as an aid, not proof
+of completeness; verify sources, coverage, and counts.
 
 Use `citation-verification` as guidance: prefer DOI/publisher, arXiv, or Crossref records;
 Google Scholar is discovery only. Citation counts are not quality evidence; verify
@@ -61,6 +60,10 @@ Keep outputs in the requested location.
 Use `avoid-ai-writing` only for requested edits to authorized prose. Never evade AI
 detection or misrepresent authorship. Patterns are fallible; preserve meaning, sources,
 attribution, and protected content.
+
+Use `tech-writing-proofread` only for requested proofreading of authorized English
+technical prose. Return specific suggestions without rewriting; flag factual concerns
+for verification. Do not send text to external services without approval.
 
 ## references
 

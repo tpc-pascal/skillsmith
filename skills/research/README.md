@@ -28,6 +28,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 | `matplotlib` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Local scientific plotting and figure export |
 | `efficient-web-research` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | Efficient, targeted public web research |
 | `wiki-researcher` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | Evidence-based codebase and architecture explanations |
+| `tech-writing-proofread` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | English technical proofreading suggestions |
 | `citation-verification` | [galaxy-dawn/claude-scholar](https://github.com/galaxy-dawn/claude-scholar) | Reference verification principles |
 | `avoid-ai-writing` | [conorbronsdon/avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | Optional user-authorized prose cleanup |
 | `impeccable` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Optional frontend design guidance |
