@@ -24,6 +24,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 | `citation-management` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Citation lookup, verification, and BibTeX |
 | `litreview` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Reproducible literature reviews and evidence synthesis |
 | `exploratory-data-analysis` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Bounded, local exploration of authorized scientific data |
+| `statistical-analysis` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Test selection, assumptions, effect sizes, and uncertainty |
 | `citation-verification` | [galaxy-dawn/claude-scholar](https://github.com/galaxy-dawn/claude-scholar) | Reference verification principles |
 | `avoid-ai-writing` | [conorbronsdon/avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | Optional user-authorized prose cleanup |
 | `impeccable` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Optional frontend design guidance |
