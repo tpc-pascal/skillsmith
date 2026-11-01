@@ -48,7 +48,7 @@ Collections live under `skills/`. See the [research collection](skills/research/
     <tr>
       <td><a href="skills/research/paper/SKILL.md"><code>paper</code></a></td>
       <td>Write international-standard or Vietnamese public-facing reports</td>
-      <td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>citation-management</code><br><a href="https://github.com/galaxy-dawn/claude-scholar">galaxy-dawn/claude-scholar</a> — <code>citation-verification</code></td>
+      <td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>citation-management</code><br><a href="https://github.com/galaxy-dawn/claude-scholar">galaxy-dawn/claude-scholar</a> — <code>citation-verification</code><br><a href="https://github.com/hugohe3/ppt-master">hugohe3/ppt-master</a> — <code>ppt-master</code></td>
     </tr>
   </tbody>
 </table>

@@ -18,6 +18,7 @@ metadata:
 |video/audio/image/URL media (summary, subtitles, cut, frames, download)|skill `media`|
 |Web/social/search (URLs, articles, exa)|skill `web`|
 |Write a report from sources|**Question gate** (below) → choose one `paper` format|
+|Create or edit a presentation|session `ppt-master` only when explicitly requested; follow `paper`'s external-service safeguards|
 |Diagrams/charts explicitly requested by the user|session `archify` (needs Node; `.archify/<slug>/` HTML/SVG + `candidate.json` verify loop)|
 
 ## Confirm report requirements

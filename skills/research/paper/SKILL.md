@@ -50,6 +50,13 @@ Crossref, and other canonical metadata; treat Google Scholar as discovery, not a
 Do not treat citation counts as evidence of quality or repeat unsupported statistics.
 Verify cited claims in the source itself.
 
+Use `ppt-master` only for user-requested presentation work. Review its scripts before
+running them. External image, AI, narration, or hosted services are off by default:
+confirm the provider and approval to send the presentation content before each use.
+Never read or transmit existing `.env` credentials; use no API key unless the user
+explicitly supplies or authorizes it for the named provider. Keep outputs in the
+requested workspace location, and do not install dependencies without approval.
+
 ## references
 
 Citation formats: [`citation-styles.md`](references/citation-styles.md). Source credibility: [`source-assessment.md`](references/source-assessment.md). Synthesis: [`synthesis.md`](references/synthesis.md). Reporting principles: [`reporting-principles-sources.md`](references/reporting-principles-sources.md). Natural prose: [`ai-writing-tells.md`](references/ai-writing-tells.md) + [`slop-scoring.md`](references/slop-scoring.md) — sweep against both before delivering.

@@ -20,6 +20,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 |---|---|---|
 | `archify` | [tt-a1i/archify](https://github.com/tt-a1i/archify) | On-demand diagrams and explainers |
 | `docling` | [docling-project/docling](https://github.com/docling-project/docling) | Document conversion, OCR, and structured exports |
+| `ppt-master` | [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) | Optional presentation authoring and editing |
 | `citation-management` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Citation lookup, verification, and BibTeX |
 | `citation-verification` | [galaxy-dawn/claude-scholar](https://github.com/galaxy-dawn/claude-scholar) | Reference verification principles |
 | `impeccable` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Optional frontend design guidance |

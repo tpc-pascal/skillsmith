@@ -29,6 +29,9 @@ TASTE_SHA="12af471f627f866411b4bd785b19646d3672784c"
 ARCHIFY_URL="https://github.com/tt-a1i/archify.git"
 ARCHIFY_SHA="a4065941f12be7967436261d9934784e381d423c"
 
+PPT_URL="https://github.com/hugohe3/ppt-master.git"
+PPT_SHA=""
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
@@ -39,6 +42,7 @@ citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
 archify|$ARCHIFY_URL|$ARCHIFY_SHA|archify
+ppt-master|$PPT_URL|$PPT_SHA|skills/ppt-master
 '
 
 OUT="" LICENSES_OUT="" PICK=()
