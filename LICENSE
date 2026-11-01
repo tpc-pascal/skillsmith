@@ -35,4 +35,5 @@ Review the upstream terms before redistributing any fetched skill.
 - `docling` — https://github.com/docling-project/docling at `07154cdc82500058ad9377bac92beed3de820458` — MIT
 - `citation-management` — https://github.com/K-Dense-AI/scientific-agent-skills at `5f2bc0341354fd5590aef76a533ada1e1e5b4e62` — MIT License
 - `citation-verification` — https://github.com/galaxy-dawn/claude-scholar at `d394fb599ed9e6ea2212a9e6daa864345fe97a26` — upstream LICENSE: MIT License
+- `impeccable` — https://github.com/pbakaus/impeccable at `e89e3ada3e875a89ac2c5d33d11e65ebef6fe285` — upstream LICENSE: Apache License
 <!-- END THIRD-PARTY SKILL LICENSES -->
