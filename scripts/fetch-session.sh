@@ -12,7 +12,7 @@ AGENTREACH_URL="https://github.com/Panniantong/Agent-Reach.git"
 AGENTREACH_SHA="7a38047acf26a729cbb27851e3cb81639da86b29"
 
 DOCLING_URL="https://github.com/docling-project/docling.git"
-DOCLING_SHA=""
+DOCLING_SHA="07154cdc82500058ad9377bac92beed3de820458"
 
 # name|url|sha|skill path in the repo
 TABLE='
