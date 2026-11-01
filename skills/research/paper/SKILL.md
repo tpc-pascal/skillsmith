@@ -15,59 +15,36 @@ Writes reports from collected sources — choose **one** form; never mix both fr
 
 |Form|Reference|Use when|
 |---|---|---|
-|International-standard report|[`references/report-academic.md`](references/report-academic.md)|Research structure, assessable methods, full citations; pick the guideline by study type, no compliance claim without a checklist.|
-|Vietnamese popular report|[`references/report-template.md`](references/report-template.md)|For a general Vietnamese audience; evidence and limitations preserved.|
+|International-standard|[`references/report-academic.md`](references/report-academic.md)|Research structure, methods, citations; choose by study type; claim compliance only after checklist.|
+|Vietnamese public-facing|[`references/report-template.md`](references/report-template.md)|General readers; preserve evidence and limitations.|
 
-Shared rules: [`references/output-format.md`](references/output-format.md). Extract documents/media with the relevant skill first.
+Shared rules: [`references/output-format.md`](references/output-format.md). Extract sources with the relevant skill first.
 
 ## Workflow rules
 
-1. Use the `orchestrator` question gate for form, audience, purpose, language, format; do not re-ask answered questions.
-2. Use only the selected report framework. Match the requested/contextual language; do not force bilingual output.
-3. Keep `.report.md` on findings/reasoning; raw extracts, large tables, tool logs go to support files (see `references/output-format.md`).
-4. Prefer local tools; network only when the source/request requires it; never switch services silently.
-5. Save `<source_name>.report.md` next to the source; never overwrite sources.
-6. Do not invent data, citations, or page numbers. Cite claims; mark facts vs observations vs inferences.
-7. Check citations/links/consistency; verify DOCX/PDF exports with local tools; disclose unavailable ones.
-8. Respond in the user's language; name every file created.
+1. Use the `orchestrator` gate for form, audience, purpose, language, and format; don't repeat answered questions.
+2. Follow one form; match requested language. Keep findings in `.report.md`, supporting extracts/tables/logs separate.
+3. Prefer local tools; use network only as requested and never switch services silently.
+4. Save `<source_name>.report.md` beside, never over, the source. Invent no data, citations, or pages; distinguish fact, observation, and inference.
+5. Verify citations, links, consistency, and local DOCX/PDF exports; disclose limits. Reply in the user's language and name created files.
 
 ## DOCX and PDF export
 
-Use `pandoc` for DOCX or `libreoffice --headless --convert-to pdf`; for complex cases see [`doc-recipes.md`](../doc/references/doc-recipes.md). Verify with `pdfinfo` and `pdftotext`.
+Use `pandoc` for DOCX or `libreoffice --headless --convert-to pdf`; see [`doc-recipes.md`](../doc/references/doc-recipes.md) for complex cases. Verify with `pdfinfo` and `pdftotext`.
 
 ## Third-party skills (fetched per session)
 
-Fetched per session with `scripts/fetch-session.sh`.
+Fetched per session with `scripts/fetch-session.sh`; use only on request.
 
-Use `citation-management` only on request; approve provider; public queries only, no
-private drafts, unapproved credentials, proxies, or rate-limit bypasses; verify metadata.
-
-Use `litreview` only on request. Approve provider/data; default to public terms. Review
-scripts; no Parallel/OpenRouter, `.env` credentials, or installs without approval. Verify
-sources and counts; do not claim completeness.
-
-Use `citation-verification` as guidance: prefer DOI/publisher, arXiv, or Crossref; Google
-Scholar is discovery only. Verify claims; counts do not prove quality.
-
-Use `ppt-master` only for requested presentations; review scripts and approve providers,
-content sharing, API keys, and installs. Never read `.env`; save only to the requested
-location.
-
-Use `avoid-ai-writing` or `humanizer` only for requested edits to authorized prose.
-Preserve meaning, claims, sources, and attribution; never evade AI detection or misrepresent
-authorship. Treat patterns as fallible.
-
-Use `tech-writing-proofread` only on requested, authorized English technical prose. Suggest, do not
-rewrite; flag factual concerns. No external sharing without approval.
-
-Use `write-in-my-voice` only for requested posts based on authorized samples; never
-imitate others. Keep samples local unless hosted processing is approved. Show the exact
-preview and get separate confirmation before publishing.
-
-Use `stakeholder-investor-reports` on request for process advice or empty templates only;
-not financial/legal/tax advice; no employee/customer data. Treat figures as
-unverified. Never invent or share business data without approval. Notion is manual; never
-request credentials.
+- `citation-management`: approve provider; public queries only. No private drafts, unapproved credentials, proxies, or rate-limit bypasses; verify metadata.
+- `litreview`: approve provider/data; review scripts. No Parallel/OpenRouter, `.env` credentials, or installs without approval. Verify sources/counts; don't claim completeness.
+- `citation-verification`: prefer DOI/publisher, arXiv, or Crossref; Scholar is discovery only. Verify claims; counts don't prove quality.
+- `ppt-master`: review scripts; approve provider, external content, keys, and installs. Never read `.env`; save only where requested.
+- `avoid-ai-writing` / `humanizer`: edit authorized prose only; preserve claims, sources, attribution; no detector evasion or authorship misrepresentation.
+- `tech-writing-proofread`: suggest, don't rewrite authorized English technical prose; flag factual concerns. No external sharing without approval.
+- `write-in-my-voice`: use authorized samples only; never imitate others. Keep samples local unless hosted use approved; preview and get separate publish confirmation.
+- `stakeholder-investor-reports`: process advice or empty templates only; no financial/legal/tax advice or employee/customer data. Verify figures; never share business data without approval. Notion is manual; never request credentials.
+- `survey-generator`: source-check papers and citations; review scripts. Fireworks rendering sends the bundle to a paid external API: get explicit approval for provider/model, data, and budget first. Never send secrets or private data; never read `.env`. Inspect the HTML; don't publish or host it.
 
 ## references
 

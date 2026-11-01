@@ -6,6 +6,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/paper`: Add session skill `survey-generator` for source-verified AI/ML survey drafts, fetched per session.
 - `research/paper`: Add session skill `humanizer` from `blader/humanizer`, fetched per session.
 - `research/paper`: Add session skill `stakeholder-investor-reports` for requested external-reporting advice and empty templates, fetched per session.
 - `research/paper`: Add session skill `write-in-my-voice` from `sickn33/agentic-awesome-skills`, fetched per session.
