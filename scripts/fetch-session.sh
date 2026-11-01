@@ -62,6 +62,7 @@ stakeholder-investor-reports|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-cl
 survey-generator|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/survey-generator
 academic-paper|$ARS_URL|$ARS_SHA|academic-paper
 academic-paper-reviewer|$ARS_URL|$ARS_SHA|academic-paper-reviewer
+academic-pipeline|$ARS_URL|$ARS_SHA|academic-pipeline
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
@@ -110,10 +111,10 @@ grab() { # url sha path dest
     rm -rf "$OUT/$dest"
     cp -R "$dir/$path" "$OUT/$dest"
     if [ "$url" = "$ARS_URL" ]; then
-      local -a reviewer_files=()
+      local -a extra_files=()
       local -a extra_paths=()
       if [ "$dest" = "academic-paper-reviewer" ]; then
-        reviewer_files=(
+        extra_files=(
           scripts/audit_panel_claims.py
           scripts/check_acronyms.py
           scripts/check_panel_synthesis.py
@@ -130,16 +131,29 @@ grab() { # url sha path dest
           docs/DATA_FLOWS.md
           docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
         )
-        for file in "${reviewer_files[@]}"; do
-          extra_paths+=("/$file")
-        done
+      elif [ "$dest" = "academic-pipeline" ]; then
+        extra_files=(
+          scripts/build_cross_document_consistency_advisory.py
+          scripts/check_pipeline_integrity.py
+          scripts/check_re_review_synthesis.py
+          scripts/inquiry_branch_ledger.py
+          scripts/revision_roadmap.py
+          scripts/_block_parser.py
+          academic-paper-reviewer/references/re_review_mode_protocol.md
+          docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
+          docs/design/2026-08-10-673-cross-run-adjudication-activity-spec.md
+          docs/design/2026-08-17-743-inquiry-branch-ledger-design.md
+        )
       fi
+      for file in "${extra_files[@]}"; do
+        extra_paths+=("/$file")
+      done
       git -C "$dir" sparse-checkout set "$path" shared /scripts/run_codex_audit.sh "${extra_paths[@]}"
       git -C "$dir" checkout -q FETCH_HEAD
       mkdir -p "$OUT/shared" "$OUT/scripts"
       cp -R "$dir/shared/." "$OUT/shared/"
       cp "$dir/scripts/run_codex_audit.sh" "$OUT/scripts/run_codex_audit.sh"
-      for file in "${reviewer_files[@]}"; do
+      for file in "${extra_files[@]}"; do
         mkdir -p "$OUT/${file%/*}"
         cp "$dir/$file" "$OUT/$file"
       done
