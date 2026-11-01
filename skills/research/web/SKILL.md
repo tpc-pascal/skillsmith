@@ -18,6 +18,7 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 |Read a public page|Built-in browser or `curl`|—|
 |Search public web sources|A user-approved search provider|—|
 |Targeted public research|Session-fetched `efficient-web-research`; approved provider only|`efficient-web-research`|
+|Explain a software architecture from source|Session-fetched `wiki-researcher`, for authorized repositories|`wiki-researcher`|
 |Read public social content unavailable to built-in tools|Session-fetched `agent-reach`, only after provider and request are approved|`agent-reach`|
 |Frontend design work explicitly requested by the user|Session-fetched `impeccable`; use its guidance only|`impeccable`|
 |Frontend visual direction and review explicitly requested by the user|Session-fetched `taste-skill`; use its guidance only|`taste-skill`|
@@ -34,8 +35,8 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 7. Network search and retrieval require connectivity; do not silently switch providers after a failure.
 8. For media, hand off to `media`; for reports, confirm requirements with `orchestrator` before handing off to `paper`.
 9. Translate only relevant passages and preserve attribution and uncertainty; see [`references/translation.md`](references/translation.md).
-10. Use `impeccable` only for an explicitly requested frontend design task. Its setup can download and run a binary; do not install, download, or execute it without the user's explicit approval, and do not change files outside the requested UI scope.
-11. Use `taste-skill` only for an explicitly requested frontend design task. Review its scripts before running them; obtain approval before network asset retrieval, and write only within the requested UI scope. Do not fetch assets with unclear reuse rights.
+10. Use `impeccable` only for requested UI work. Its setup downloads a binary; do not download/run it or edit outside scope without approval.
+11. Use `taste-skill` only for requested UI work. Review scripts, get approval before network asset retrieval, and use assets with clear reuse rights.
 
 ## Third-party skills (fetched per session)
 
@@ -47,14 +48,8 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 
 `efficient-web-research`: fetches public research guidance to a temporary directory; follow the provider approval and untrusted-content rules above.
 
+`wiki-researcher`: fetches codebase-analysis guidance to a temporary directory. Use only on repositories the user is authorized to inspect; analyze read-only, never execute the inspected code, and do not expose secrets or credentials.
+
 ## references
 
 - [`references/translation.md`](references/translation.md) — translating quotes and claims from foreign-language sources, with attribution and hedging preserved.
-
-## Common combined flows
-
-```text
-URL web/social [network required] ▸ jina/agent-reach ▸ text ▸ paper (if a report is needed)
-Topic search [network required] ▸ exa ▸ URL list ▸ jina ▸ text ▸ paper (if a report is needed)
-URL media [network required] ▸ skill media ▸ digest + frame ▸ paper (if a report is needed)
-```
