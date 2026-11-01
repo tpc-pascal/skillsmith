@@ -42,7 +42,7 @@ AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
 AAS_SHA="6f819e34e3847c4a9a4715409ec4d76b0ad42bdb"
 
 ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
-ARS_SHA="c43c529641daf9f5e464b1e001f31501286d6680"
+ARS_SHA="3970a91de7527b2e6149a48537b9ef6a876ef806"
 
 # name|url|sha|skill path in the repo
 TABLE='
