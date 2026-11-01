@@ -37,35 +37,37 @@ Local first: `pandoc <file>.report.md -o <file>.report.docx` or `libreoffice --h
 
 ## Third-party skills (fetched per session)
 
-Third-party tools are fetched on demand for the current session with `scripts/fetch-session.sh`.
+Fetched on demand with `scripts/fetch-session.sh`.
 
-Use `citation-management` only when requested. Approve the provider before lookup; send
-public bibliographic terms, never private drafts. No credentials, proxies, or limit
-bypasses without approval; verify metadata.
+Use `citation-management` only on request; approve provider; public queries only, no
+private drafts, unapproved credentials, proxies, or rate-limit bypasses; verify metadata.
 
-Use `litreview` only when requested. Approve provider/data before external searches;
-default to public terms. Review scripts; no Parallel/OpenRouter, `.env` credentials, or
-dependency installs without approval. Verify sources, coverage, and counts; do not claim
-completeness.
+Use `litreview` only on request. Approve provider/data; default to public terms. Review
+scripts; no Parallel/OpenRouter, `.env` credentials, or installs without approval. Verify
+sources and counts; do not claim completeness.
 
 Use `citation-verification` as guidance: prefer DOI/publisher, arXiv, or Crossref; Google
-Scholar is discovery only. Citation counts do not prove quality; verify claims in source.
+Scholar is discovery only. Verify claims; counts do not prove quality.
 
-Use `ppt-master` only for requested presentations; review scripts. Approve provider before
-sending content externally; never read/transmit `.env` credentials. API keys and installs
-require approval; save only to the requested location.
+Use `ppt-master` only for requested presentations; review scripts and approve providers,
+content sharing, API keys, and installs. Never read `.env`; save only to the requested
+location.
 
-Use `avoid-ai-writing` only for requested edits to authorized prose. Never evade
-detection or misrepresent authorship. Patterns are fallible; preserve meaning, sources,
-attribution, and protected content.
+Use `avoid-ai-writing` only on authorized prose; never evade detection or misrepresent
+authorship. Patterns are fallible; preserve meaning, sources, attribution, and protected
+content.
 
-Use `tech-writing-proofread` only on requested, authorized English technical prose. Give
-suggestions, not rewrites; flag factual concerns. No external sharing without
-approval.
+Use `tech-writing-proofread` only on requested English technical prose. Suggest, do not
+rewrite; flag factual concerns. No external sharing without approval.
 
-Use `write-in-my-voice` only for requested social posts based on user-authored or
-authorized samples; never imitate others. Keep samples local unless the hosted connector
-is approved. Before publishing, show the exact preview and obtain separate confirmation.
+Use `write-in-my-voice` only for requested posts based on authorized samples; never
+imitate others. Keep samples local unless hosted processing is approved. Show the exact
+preview and get separate confirmation before publishing.
+
+Use `stakeholder-investor-reports` on request for process advice or empty templates only;
+not financial/legal/tax advice; no employee/customer data. Treat figures as
+unverified. Never invent or share business data without approval. Notion is manual; never
+request credentials.
 
 ## references
 
