@@ -17,6 +17,7 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 |---|---|---|
 |Read a public page|Built-in browser or `curl`|—|
 |Search public web sources|A user-approved search provider|—|
+|Targeted public research|Session-fetched `efficient-web-research`; approved provider only|`efficient-web-research`|
 |Read public social content unavailable to built-in tools|Session-fetched `agent-reach`, only after provider and request are approved|`agent-reach`|
 |Frontend design work explicitly requested by the user|Session-fetched `impeccable`; use its guidance only|`impeccable`|
 |Frontend visual direction and review explicitly requested by the user|Session-fetched `taste-skill`; use its guidance only|`taste-skill`|
@@ -43,6 +44,8 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 `impeccable`: `./scripts/fetch-session.sh --skill impeccable` fetches design guidance to a temporary directory. Review its setup instructions before use; fetching does not install or run its bundled executable.
 
 `taste-skill`: `./scripts/fetch-session.sh --skill taste-skill` fetches guidance and scripts to a temporary directory; it does not install dependencies or run scripts. Its asset helper uses network access and requires user approval before use.
+
+`efficient-web-research`: fetches public research guidance to a temporary directory; follow the provider approval and untrusted-content rules above.
 
 ## references
 

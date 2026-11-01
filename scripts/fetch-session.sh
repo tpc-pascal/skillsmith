@@ -35,6 +35,9 @@ PPT_SHA="5e8856be0da8e6bc85c4aa28acc614478f7b7137"
 AVOIDAI_URL="https://github.com/conorbronsdon/avoid-ai-writing.git"
 AVOIDAI_SHA="3af81e358f17dac2975ddd1158e9fb138a3d2f8b"
 
+AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
+AAS_SHA="d6b7ae27c06c015f1bc47ba2d694d1eb9e1cdeaf"
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
@@ -45,6 +48,7 @@ litreview|$CITATION_URL|$CITATION_SHA|skills/literature-review
 exploratory-data-analysis|$CITATION_URL|$CITATION_SHA|skills/exploratory-data-analysis
 statistical-analysis|$CITATION_URL|$CITATION_SHA|skills/statistical-analysis
 matplotlib|$CITATION_URL|$CITATION_SHA|skills/matplotlib
+efficient-web-research|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/efficient-web-research
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
@@ -95,7 +99,7 @@ grab() { # url sha path dest
   if [ -n "$LICENSES_OUT" ]; then
     local license_dir="$LICENSES_OUT/$dest"
     mkdir -p "$license_dir"
-    for license_file in LICENSE LICENSE.md LICENSE.txt COPYING COPYING.md COPYING.txt; do
+    for license_file in LICENSE-CONTENT LICENSE-CONTENT.md LICENSE-CONTENT.txt LICENSE LICENSE.md LICENSE.txt COPYING COPYING.md COPYING.txt; do
       rm -f -- "$license_dir/$license_file"
       if git -C "$dir" cat-file -e "FETCH_HEAD:$license_file" 2>/dev/null; then
         git -C "$dir" show "FETCH_HEAD:$license_file" > "$license_dir/$license_file"

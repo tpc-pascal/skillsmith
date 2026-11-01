@@ -72,6 +72,9 @@ def license_for_skill(skill_file: Path, license_dir: Path, name: str) -> str:
             (
                 license_dir / name / filename
                 for filename in (
+                    "LICENSE-CONTENT",
+                    "LICENSE-CONTENT.md",
+                    "LICENSE-CONTENT.txt",
                     "LICENSE",
                     "LICENSE.md",
                     "LICENSE.txt",
@@ -96,6 +99,11 @@ def license_for_skill(skill_file: Path, license_dir: Path, name: str) -> str:
             "",
         )
         license_text = f"upstream {license_file.name}: {title or 'see pinned file'}"
+        if (
+            license_file.name.startswith("LICENSE-CONTENT")
+            and "Creative Commons Attribution 4.0 International" in title
+        ):
+            license_text = "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
     else:
         raise ValueError(f"{name}: missing or unsupported license declaration")
     if not license_text or "\n" in license_text or "|" in license_text:
@@ -112,7 +120,7 @@ def render_block(
         return ""
     lines = [
         START_MARKER,
-        "License declarations come from upstream `SKILL.md` metadata or, when absent, a root LICENSE/COPYING file at the pinned commit.",
+        "License declarations come from upstream `SKILL.md` metadata or, when absent, an applicable root content license (`LICENSE-CONTENT`) before a generic root LICENSE/COPYING file at the pinned commit.",
         "Review the upstream terms before redistributing any fetched skill.",
         "",
     ]

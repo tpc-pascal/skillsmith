@@ -43,7 +43,7 @@ Collections live under `skills/`. See the [research collection](skills/research/
     <tr>
       <td><a href="skills/research/web/SKILL.md"><code>web</code></a></td>
       <td>Read and search online sources</td>
-      <td><a href="https://github.com/Panniantong/Agent-Reach">Panniantong/Agent-Reach</a> — <code>agent-reach</code><br><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a> — <code>impeccable</code><br><a href="https://github.com/Leonxlnx/taste-skill">Leonxlnx/taste-skill</a> — <code>taste-skill</code></td>
+      <td><a href="https://github.com/Panniantong/Agent-Reach">Panniantong/Agent-Reach</a> — <code>agent-reach</code><br><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a> — <code>impeccable</code><br><a href="https://github.com/Leonxlnx/taste-skill">Leonxlnx/taste-skill</a> — <code>taste-skill</code><br><a href="https://github.com/sickn33/agentic-awesome-skills">sickn33/agentic-awesome-skills</a> — <code>efficient-web-research</code></td>
     </tr>
     <tr>
       <td><a href="skills/research/paper/SKILL.md"><code>paper</code></a></td>
