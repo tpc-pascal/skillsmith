@@ -18,7 +18,7 @@ CITATION_URL="https://github.com/K-Dense-AI/scientific-agent-skills.git"
 CITATION_SHA="5f2bc0341354fd5590aef76a533ada1e1e5b4e62"
 
 SCHOLAR_URL="https://github.com/galaxy-dawn/claude-scholar.git"
-SCHOLAR_SHA=""
+SCHOLAR_SHA="d394fb599ed9e6ea2212a9e6daa864345fe97a26"
 
 # name|url|sha|skill path in the repo
 TABLE='
