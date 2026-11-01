@@ -7,6 +7,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 ## [Unreleased]
 
 - `research/media`: Add session skill `watch` from `bradautomates/claude-video`, fetched per session.
+- `research/web`: Add session skill `agent-reach` for user-approved, read-only public web and social retrieval.
 
 ## [Repository baseline] - 2026-10-20
 

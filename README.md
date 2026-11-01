@@ -43,7 +43,7 @@ Collections live under `skills/`. See the [research collection](skills/research/
     <tr>
       <td><a href="skills/research/web/SKILL.md"><code>web</code></a></td>
       <td>Read and search online sources</td>
-      <td>—</td>
+      <td><a href="https://github.com/Panniantong/Agent-Reach">Panniantong/Agent-Reach</a> — <code>agent-reach</code></td>
     </tr>
     <tr>
       <td><a href="skills/research/paper/SKILL.md"><code>paper</code></a></td>

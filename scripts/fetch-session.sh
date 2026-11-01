@@ -8,9 +8,13 @@ set -euo pipefail
 WATCH_URL="https://github.com/bradautomates/claude-video.git"
 WATCH_SHA="03ceb42f7fa2c4439aca01752118044baabffb8f"
 
+AGENTREACH_URL="https://github.com/Panniantong/Agent-Reach.git"
+AGENTREACH_SHA=""
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
+agent-reach|$AGENTREACH_URL|$AGENTREACH_SHA|agent_reach/skill
 '
 
 OUT="" LICENSES_OUT="" PICK=()
