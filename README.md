@@ -33,7 +33,7 @@ Collections live under `skills/`. See the [research collection](skills/research/
     <tr>
       <td><a href="skills/research/doc/SKILL.md"><code>doc</code></a></td>
       <td>Read/convert PDF, DOCX, and XLSX</td>
-      <td><a href="https://github.com/docling-project/docling">docling-project/docling</a> — <code>docling</code></td>
+      <td><a href="https://github.com/docling-project/docling">docling-project/docling</a> — <code>docling</code><br><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>exploratory-data-analysis</code></td>
     </tr>
     <tr>
       <td><a href="skills/research/media/SKILL.md"><code>media</code></a></td>

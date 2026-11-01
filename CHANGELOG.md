@@ -6,6 +6,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/doc`: Add session skill `exploratory-data-analysis` from `K-Dense-AI/scientific-agent-skills`, fetched per session.
 - `research/paper`: Add session skill `litreview` from `K-Dense-AI/scientific-agent-skills`, fetched per session.
 - `research/paper`: Add session skill `avoid-ai-writing` from `conorbronsdon/avoid-ai-writing`, fetched per session.
 - `research/paper`: Add session skill `ppt-master` from `hugohe3/ppt-master`, fetched per session.
