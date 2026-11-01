@@ -24,7 +24,7 @@ IMPECCABLE_URL="https://github.com/pbakaus/impeccable.git"
 IMPECCABLE_SHA="e89e3ada3e875a89ac2c5d33d11e65ebef6fe285"
 
 TASTE_URL="https://github.com/Leonxlnx/taste-skill.git"
-TASTE_SHA=""
+TASTE_SHA="12af471f627f866411b4bd785b19646d3672784c"
 
 # name|url|sha|skill path in the repo
 TABLE='
