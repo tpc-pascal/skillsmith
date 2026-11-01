@@ -28,7 +28,7 @@ Collections live under `skills/`. See the [research collection](skills/research/
       <td rowspan="5"><code>research</code></td>
       <td><a href="skills/research/orchestrator/SKILL.md"><code>orchestrator</code></a></td>
       <td>Identify needs and coordinate skills</td>
-      <td>—</td>
+      <td><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a> — <code>archify</code></td>
     </tr>
     <tr>
       <td><a href="skills/research/doc/SKILL.md"><code>doc</code></a></td>

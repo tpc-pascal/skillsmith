@@ -18,7 +18,7 @@ metadata:
 |video/audio/image/URL media (summary, subtitles, cut, frames, download)|skill `media`|
 |Web/social/search (URLs, articles, exa)|skill `web`|
 |Write a report from sources|**Question gate** (below) → choose one `paper` format|
-|Diagrams/charts for reports|session `archify` (needs Node; `.archify/<slug>/` HTML/SVG + `candidate.json` verify loop)|
+|Diagrams/charts explicitly requested by the user|session `archify` (needs Node; `.archify/<slug>/` HTML/SVG + `candidate.json` verify loop)|
 
 ## Confirm report requirements
 
@@ -29,8 +29,9 @@ Applies when the user asks to create or rewrite a report (not for extraction/con
 1. **Match the input language** — answer in the language the user used.
 2. **Name every output**: `<name>.<suffix>`, never overwrite the source. Suffixes: `.extract.md|.txt|.csv`, `.digest.md`, `.srt|.vtt`, `.clip-<t1>-<t2>.mp4`, `.report.md|.report.docx`.
 3. **Never invent input** — only process real files; output next to or inside the source.
-4. **Web/social/search input** → skill `web`; **media input** → skill `media`. Locked content → let agent-reach/Jina read it; never log in or bypass. **Local-first**: prefer local tools; offline, use only real local/cache sources; fetch third-party skills via `scripts/fetch-session.sh`.
+4. **Web/social/search input** → skill `web`; **media input** → skill `media`. Access only public content; if content is restricted, explain the limitation and stop without bypassing it. **Local-first**: prefer local tools; offline, use only real local/cache sources; fetch third-party skills via `scripts/fetch-session.sh`.
 5. **Always report the file written** (name + path); **verify every `.report.docx`** per skill `paper` (`pdfinfo` + `pdftotext`).
+6. Use `archify` only for a user-requested diagram or explainer. Review commands before running them; obtain approval before network access or installing dependencies. Keep output inside the project-local `.archify/` directory, and never modify global agent instructions, settings, or files outside the workspace.
 
 ## Common combined flows
 
