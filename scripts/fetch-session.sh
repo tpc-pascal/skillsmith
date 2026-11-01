@@ -17,12 +17,16 @@ DOCLING_SHA="07154cdc82500058ad9377bac92beed3de820458"
 CITATION_URL="https://github.com/K-Dense-AI/scientific-agent-skills.git"
 CITATION_SHA="5f2bc0341354fd5590aef76a533ada1e1e5b4e62"
 
+SCHOLAR_URL="https://github.com/galaxy-dawn/claude-scholar.git"
+SCHOLAR_SHA=""
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
 agent-reach|$AGENTREACH_URL|$AGENTREACH_SHA|agent_reach/skill
 docling|$DOCLING_URL|$DOCLING_SHA|docling/.agents/skills/docling
 citation-management|$CITATION_URL|$CITATION_SHA|skills/citation-management
+citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 '
 
 OUT="" LICENSES_OUT="" PICK=()

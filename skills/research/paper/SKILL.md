@@ -45,6 +45,11 @@ draft text. Do not provide optional API credentials or use proxy support unless 
 explicitly authorizes it, and never bypass provider access limits. Verify returned
 metadata before citing it.
 
+Use `citation-verification` as a reference guide: prefer DOI/publisher records, arXiv,
+Crossref, and other canonical metadata; treat Google Scholar as discovery, not authority.
+Do not treat citation counts as evidence of quality or repeat unsupported statistics.
+Verify cited claims in the source itself.
+
 ## references
 
 Citation formats: [`citation-styles.md`](references/citation-styles.md). Source credibility: [`source-assessment.md`](references/source-assessment.md). Synthesis: [`synthesis.md`](references/synthesis.md). Reporting principles: [`reporting-principles-sources.md`](references/reporting-principles-sources.md). Natural prose: [`ai-writing-tells.md`](references/ai-writing-tells.md) + [`slop-scoring.md`](references/slop-scoring.md) — sweep against both before delivering.

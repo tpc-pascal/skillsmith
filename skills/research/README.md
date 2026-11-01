@@ -20,6 +20,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 |---|---|---|
 | `docling` | [docling-project/docling](https://github.com/docling-project/docling) | Document conversion, OCR, and structured exports |
 | `citation-management` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Citation lookup, verification, and BibTeX |
+| `citation-verification` | [galaxy-dawn/claude-scholar](https://github.com/galaxy-dawn/claude-scholar) | Reference verification principles |
 | `watch` | [bradautomates/claude-video](https://github.com/bradautomates/claude-video) | Media content summaries |
 | `agent-reach` | [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | Optional public web and social reading |
 
