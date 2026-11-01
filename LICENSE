@@ -31,4 +31,5 @@ License declarations come from upstream `SKILL.md` metadata or, when absent, a r
 Review the upstream terms before redistributing any fetched skill.
 
 - `watch` — https://github.com/bradautomates/claude-video at `03ceb42f7fa2c4439aca01752118044baabffb8f` — MIT
+- `agent-reach` — https://github.com/Panniantong/Agent-Reach at `7a38047acf26a729cbb27851e3cb81639da86b29` — upstream LICENSE: MIT License
 <!-- END THIRD-PARTY SKILL LICENSES -->
