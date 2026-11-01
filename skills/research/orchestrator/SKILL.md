@@ -19,6 +19,7 @@ metadata:
 |Web/social/search (URLs, articles, exa)|skill `web`|
 |Write a report from sources|**Question gate** (below) → choose one `paper` format|
 |Create or edit a presentation|session `ppt-master` only when explicitly requested; follow `paper`'s external-service safeguards|
+|Clean up the user's own prose|session `avoid-ai-writing` only when requested; never use it to evade detection or misrepresent authorship|
 |Diagrams/charts explicitly requested by the user|session `archify` (needs Node; `.archify/<slug>/` HTML/SVG + `candidate.json` verify loop)|
 
 ## Confirm report requirements

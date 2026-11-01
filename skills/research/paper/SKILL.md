@@ -57,6 +57,11 @@ Never read or transmit existing `.env` credentials; use no API key unless the us
 explicitly supplies or authorizes it for the named provider. Keep outputs in the
 requested workspace location, and do not install dependencies without approval.
 
+Use `avoid-ai-writing` only for prose the user owns or is authorized to edit, and only
+for requested editorial improvement. Never use it to evade AI-detection or misrepresent
+authorship. Treat pattern matches as fallible writing feedback, not evidence of who
+wrote a text; preserve meaning, sources, attribution, and protected content.
+
 ## references
 
 Citation formats: [`citation-styles.md`](references/citation-styles.md). Source credibility: [`source-assessment.md`](references/source-assessment.md). Synthesis: [`synthesis.md`](references/synthesis.md). Reporting principles: [`reporting-principles-sources.md`](references/reporting-principles-sources.md). Natural prose: [`ai-writing-tells.md`](references/ai-writing-tells.md) + [`slop-scoring.md`](references/slop-scoring.md) — sweep against both before delivering.

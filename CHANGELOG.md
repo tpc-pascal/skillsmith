@@ -6,6 +6,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/paper`: Add session skill `avoid-ai-writing` from `conorbronsdon/avoid-ai-writing`, fetched per session.
 - `research/paper`: Add session skill `ppt-master` from `hugohe3/ppt-master`, fetched per session.
 - `research/orchestrator`: Add session skill `archify` from `tt-a1i/archify`, fetched per session.
 - `research/web`: Add session skill `taste-skill` from `Leonxlnx/taste-skill`, fetched per session.

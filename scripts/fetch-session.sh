@@ -32,6 +32,9 @@ ARCHIFY_SHA="a4065941f12be7967436261d9934784e381d423c"
 PPT_URL="https://github.com/hugohe3/ppt-master.git"
 PPT_SHA="5e8856be0da8e6bc85c4aa28acc614478f7b7137"
 
+AVOID_AI_URL="https://github.com/conorbronsdon/avoid-ai-writing.git"
+AVOID_AI_SHA=""
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
@@ -43,6 +46,7 @@ impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
 archify|$ARCHIFY_URL|$ARCHIFY_SHA|archify
 ppt-master|$PPT_URL|$PPT_SHA|skills/ppt-master
+avoid-ai-writing|$AVOID_AI_URL|$AVOID_AI_SHA|skills/avoid-ai-writing
 '
 
 OUT="" LICENSES_OUT="" PICK=()
