@@ -35,6 +35,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 | `academic-paper` | [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) | Non-commercial academic writing workflow (CC BY-NC 4.0) |
 | `academic-paper-reviewer` | [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) | Non-commercial, user-confirmed peer review (CC BY-NC 4.0) |
 | `academic-pipeline` | [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) | Non-commercial workflow; also fetch academic-deep-research, academic-paper, and academic-paper-reviewer (CC BY-NC 4.0) |
+| `academic-deep-research` | [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) | Non-commercial research; explicit provider and data approval required for external searches (CC BY-NC 4.0) |
 | `humanizer` | [blader/humanizer](https://github.com/blader/humanizer) | Requested prose cleanup without altering claims or attribution |
 | `citation-verification` | [galaxy-dawn/claude-scholar](https://github.com/galaxy-dawn/claude-scholar) | Reference verification principles |
 | `avoid-ai-writing` | [conorbronsdon/avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | Optional user-authorized prose cleanup |

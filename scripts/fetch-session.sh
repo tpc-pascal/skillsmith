@@ -63,6 +63,7 @@ survey-generator|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/
 academic-paper|$ARS_URL|$ARS_SHA|academic-paper
 academic-paper-reviewer|$ARS_URL|$ARS_SHA|academic-paper-reviewer
 academic-pipeline|$ARS_URL|$ARS_SHA|academic-pipeline
+academic-deep-research|$ARS_URL|$ARS_SHA|deep-research
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
@@ -143,6 +144,21 @@ grab() { # url sha path dest
           docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
           docs/design/2026-08-10-673-cross-run-adjudication-activity-spec.md
           docs/design/2026-08-17-743-inquiry-branch-ledger-design.md
+        )
+      elif [ "$dest" = "academic-deep-research" ]; then
+        extra_files=(
+          scripts/build_cross_document_consistency_advisory.py
+          scripts/check_pipeline_integrity.py
+          scripts/check_review_form_note_sync.py
+          scripts/run_ledger.py
+          scripts/_skill_lint.py
+          scripts/ars_mark_read.py
+          scripts/human_read_attestation_resolver.py
+          academic-paper/SKILL.md
+          academic-paper/references/writing_quality_check.md
+          academic-paper-reviewer/references/review_criteria_framework.md
+          academic-pipeline/references/passport_as_reset_boundary.md
+          docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
         )
       fi
       for file in "${extra_files[@]}"; do
