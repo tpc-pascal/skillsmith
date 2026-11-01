@@ -44,6 +44,7 @@ citation-management|$CITATION_URL|$CITATION_SHA|skills/citation-management
 litreview|$CITATION_URL|$CITATION_SHA|skills/literature-review
 exploratory-data-analysis|$CITATION_URL|$CITATION_SHA|skills/exploratory-data-analysis
 statistical-analysis|$CITATION_URL|$CITATION_SHA|skills/statistical-analysis
+matplotlib|$CITATION_URL|$CITATION_SHA|skills/matplotlib
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill

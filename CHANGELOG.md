@@ -6,6 +6,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/doc`: Add session skill `matplotlib` from `K-Dense-AI/scientific-agent-skills`, fetched per session.
 - `research/doc`: Add session skill `statistical-analysis` from `K-Dense-AI/scientific-agent-skills`, fetched per session.
 - `research/doc`: Add session skill `exploratory-data-analysis` from `K-Dense-AI/scientific-agent-skills`, fetched per session.
 - `research/paper`: Add session skill `litreview` from `K-Dense-AI/scientific-agent-skills`, fetched per session.
