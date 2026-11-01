@@ -1,0 +1,10 @@
+{
+  "name": "skillsmith",
+  "version": "0.2.1",
+  "private": true,
+  "description": "Organized collections of agent skills",
+  "license": "MIT",
+  "bin": {
+    "skillsmith": "./scripts/install.sh"
+  }
+}
