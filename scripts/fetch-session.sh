@@ -33,7 +33,7 @@ PPT_URL="https://github.com/hugohe3/ppt-master.git"
 PPT_SHA="5e8856be0da8e6bc85c4aa28acc614478f7b7137"
 
 AVOIDAI_URL="https://github.com/conorbronsdon/avoid-ai-writing.git"
-AVOIDAI_SHA=""
+AVOIDAI_SHA="3af81e358f17dac2975ddd1158e9fb138a3d2f8b"
 
 # name|url|sha|skill path in the repo
 TABLE='
