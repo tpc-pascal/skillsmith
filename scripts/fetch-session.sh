@@ -27,7 +27,7 @@ TASTE_URL="https://github.com/Leonxlnx/taste-skill.git"
 TASTE_SHA="12af471f627f866411b4bd785b19646d3672784c"
 
 ARCHIFY_URL="https://github.com/tt-a1i/archify.git"
-ARCHIFY_SHA=""
+ARCHIFY_SHA="a4065941f12be7967436261d9934784e381d423c"
 
 # name|url|sha|skill path in the repo
 TABLE='
