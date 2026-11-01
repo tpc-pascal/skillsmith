@@ -41,6 +41,9 @@ HUMANIZER_SHA="0ef9fe5bc3572734fd3ae6c448fe00a30cd5dcf0"
 AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
 AAS_SHA="6f819e34e3847c4a9a4715409ec4d76b0ad42bdb"
 
+ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
+ARS_SHA="c43c529641daf9f5e464b1e001f31501286d6680"
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
@@ -57,6 +60,7 @@ tech-writing-proofread|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/s
 write-in-my-voice|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/write-in-my-voice
 stakeholder-investor-reports|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/stakeholder-investor-reports
 survey-generator|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/survey-generator
+academic-paper|$ARS_URL|$ARS_SHA|academic-paper
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
@@ -104,6 +108,13 @@ grab() { # url sha path dest
     git -C "$dir" checkout -q FETCH_HEAD
     rm -rf "$OUT/$dest"
     cp -R "$dir/$path" "$OUT/$dest"
+    if [ "$url" = "$ARS_URL" ]; then
+      git -C "$dir" sparse-checkout set "$path" shared /scripts/run_codex_audit.sh
+      git -C "$dir" checkout -q FETCH_HEAD
+      mkdir -p "$OUT/shared" "$OUT/scripts"
+      cp -R "$dir/shared/." "$OUT/shared/"
+      cp "$dir/scripts/run_codex_audit.sh" "$OUT/scripts/run_codex_audit.sh"
+    fi
   fi
   if [ -n "$LICENSES_OUT" ]; then
     local license_dir="$LICENSES_OUT/$dest"
