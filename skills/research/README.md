@@ -32,6 +32,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 | `write-in-my-voice` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | User-authorized social post drafting in the user's voice |
 | `stakeholder-investor-reports` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | External-reporting process advice and empty templates |
 | `survey-generator` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | Source-verified AI/ML survey drafts; paid rendering requires approval |
+| `academic-paper` | [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) | Non-commercial academic writing workflow (CC BY-NC 4.0) |
 | `humanizer` | [blader/humanizer](https://github.com/blader/humanizer) | Requested prose cleanup without altering claims or attribution |
 | `citation-verification` | [galaxy-dawn/claude-scholar](https://github.com/galaxy-dawn/claude-scholar) | Reference verification principles |
 | `avoid-ai-writing` | [conorbronsdon/avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | Optional user-authorized prose cleanup |

@@ -90,18 +90,26 @@ def license_for_skill(skill_file: Path, license_dir: Path, name: str) -> str:
             raise ValueError(
                 f"{name}: no license declaration in SKILL.md or upstream root license file"
             )
+        license_contents = license_file.read_text(encoding="utf-8")
         title = next(
             (
                 line.strip().removeprefix("#").strip()
-                for line in license_file.read_text(encoding="utf-8").splitlines()
+                for line in license_contents.splitlines()
                 if line.strip()
             ),
             "",
         )
         license_text = f"upstream {license_file.name}: {title or 'see pinned file'}"
-        if (
+        normalized_license = " ".join(license_contents.split())
+        if re.search(
+            r"Creative Commons\s+Attribution-NonCommercial\s+4\.0\s+International License",
+            normalized_license,
+            flags=re.IGNORECASE,
+        ):
+            license_text = "CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)"
+        elif (
             license_file.name.startswith("LICENSE-CONTENT")
-            and "Creative Commons Attribution 4.0 International" in title
+            and "Creative Commons Attribution 4.0 International" in normalized_license
         ):
             license_text = "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
     else:
