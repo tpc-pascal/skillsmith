@@ -39,28 +39,28 @@ Local first: `pandoc <file>.report.md -o <file>.report.docx` or `libreoffice --h
 
 Third-party tools are fetched on demand for the current session with `scripts/fetch-session.sh`.
 
-Use `citation-management` only for user-requested citation work. Confirm before sending
-search terms to external services; send only public bibliographic terms, never private
-draft text. Do not provide optional API credentials or use proxy support unless the user
-explicitly authorizes it, and never bypass provider access limits. Verify returned
-metadata before citing it.
+Use `citation-management` only for requested work. Before external lookup, confirm the
+provider; send public bibliographic terms only, never private drafts. Do not use
+credentials or proxies without approval or bypass access limits; verify metadata.
 
-Use `citation-verification` as a reference guide: prefer DOI/publisher records, arXiv,
-Crossref, and other canonical metadata; treat Google Scholar as discovery, not authority.
-Do not treat citation counts as evidence of quality or repeat unsupported statistics.
-Verify cited claims in the source itself.
+Use `litreview` only when requested. Before sending queries, screening data, or manuscript
+text externally, confirm the provider and data; default to public search terms. Review
+scripts before running them. Do not use Parallel/OpenRouter, read `.env` credentials, or
+install dependencies without explicit approval. Treat results as aids, not proof of
+systematic-review completeness; verify sources, coverage, and counts.
 
-Use `ppt-master` only for user-requested presentation work. Review its scripts before
-running them. External image, AI, narration, or hosted services are off by default:
-confirm the provider and approval to send the presentation content before each use.
-Never read or transmit existing `.env` credentials; use no API key unless the user
-explicitly supplies or authorizes it for the named provider. Keep outputs in the
-requested workspace location, and do not install dependencies without approval.
+Use `citation-verification` as guidance: prefer DOI/publisher, arXiv, or Crossref records;
+Google Scholar is discovery only. Citation counts are not quality evidence; verify
+claims in the source.
 
-Use `avoid-ai-writing` only for prose the user owns or is authorized to edit, and only
-for requested editorial improvement. Never use it to evade AI-detection or misrepresent
-authorship. Treat pattern matches as fallible writing feedback, not evidence of who
-wrote a text; preserve meaning, sources, attribution, and protected content.
+Use `ppt-master` only for requested presentations and review scripts before running.
+Confirm the provider and approval before sending content to external services. Never read
+or transmit `.env` credentials; use API keys or install dependencies only with approval.
+Keep outputs in the requested location.
+
+Use `avoid-ai-writing` only for requested edits to authorized prose. Never evade AI
+detection or misrepresent authorship. Patterns are fallible; preserve meaning, sources,
+attribution, and protected content.
 
 ## references
 
