@@ -30,7 +30,7 @@ ARCHIFY_URL="https://github.com/tt-a1i/archify.git"
 ARCHIFY_SHA="a4065941f12be7967436261d9934784e381d423c"
 
 PPT_URL="https://github.com/hugohe3/ppt-master.git"
-PPT_SHA=""
+PPT_SHA="5e8856be0da8e6bc85c4aa28acc614478f7b7137"
 
 # name|url|sha|skill path in the repo
 TABLE='
