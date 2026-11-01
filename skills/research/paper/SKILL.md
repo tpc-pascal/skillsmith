@@ -39,6 +39,12 @@ Local first: `pandoc <file>.report.md -o <file>.report.docx` or `libreoffice --h
 
 Third-party tools are fetched on demand for the current session with `scripts/fetch-session.sh`.
 
+Use `citation-management` only for user-requested citation work. Confirm before sending
+search terms to external services; send only public bibliographic terms, never private
+draft text. Do not provide optional API credentials or use proxy support unless the user
+explicitly authorizes it, and never bypass provider access limits. Verify returned
+metadata before citing it.
+
 ## references
 
 Citation formats: [`citation-styles.md`](references/citation-styles.md). Source credibility: [`source-assessment.md`](references/source-assessment.md). Synthesis: [`synthesis.md`](references/synthesis.md). Reporting principles: [`reporting-principles-sources.md`](references/reporting-principles-sources.md). Natural prose: [`ai-writing-tells.md`](references/ai-writing-tells.md) + [`slop-scoring.md`](references/slop-scoring.md) — sweep against both before delivering.
