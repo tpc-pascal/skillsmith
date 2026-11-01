@@ -18,6 +18,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 
 | Skill | Source | Used for |
 |---|---|---|
+| `watch` | [bradautomates/claude-video](https://github.com/bradautomates/claude-video) | Media content summaries |
 
 ## Install
 

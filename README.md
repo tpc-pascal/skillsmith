@@ -38,7 +38,7 @@ Collections live under `skills/`. See the [research collection](skills/research/
     <tr>
       <td><a href="skills/research/media/SKILL.md"><code>media</code></a></td>
       <td>Process video, audio, and images</td>
-      <td>—</td>
+      <td><a href="https://github.com/bradautomates/claude-video">bradautomates/claude-video</a> — <code>watch</code></td>
     </tr>
     <tr>
       <td><a href="skills/research/web/SKILL.md"><code>web</code></a></td>
