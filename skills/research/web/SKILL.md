@@ -19,6 +19,7 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 |Search public web sources|A user-approved search provider|—|
 |Read public social content unavailable to built-in tools|Session-fetched `agent-reach`, only after provider and request are approved|`agent-reach`|
 |Frontend design work explicitly requested by the user|Session-fetched `impeccable`; use its guidance only|`impeccable`|
+|Frontend visual direction and review explicitly requested by the user|Session-fetched `taste-skill`; use its guidance only|`taste-skill`|
 |Read a video or extract captions|Skill `media` (`watch`) or local `yt-dlp` captions|`watch`|
 
 ## Rules
@@ -33,12 +34,15 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 8. For media, hand off to `media`; for reports, confirm requirements with `orchestrator` before handing off to `paper`.
 9. Translate only relevant passages and preserve attribution and uncertainty; see [`references/translation.md`](references/translation.md).
 10. Use `impeccable` only for an explicitly requested frontend design task. Its setup can download and run a binary; do not install, download, or execute it without the user's explicit approval, and do not change files outside the requested UI scope.
+11. Use `taste-skill` only for an explicitly requested frontend design task. Review its scripts before running them; obtain approval before network asset retrieval, and write only within the requested UI scope. Do not fetch assets with unclear reuse rights.
 
 ## Third-party skills (fetched per session)
 
 `agent-reach`: `./scripts/fetch-session.sh --skill agent-reach` fetches the integration to a temporary directory; use only the public, read-only behavior allowed by these rules.
 
 `impeccable`: `./scripts/fetch-session.sh --skill impeccable` fetches design guidance to a temporary directory. Review its setup instructions before use; fetching does not install or run its bundled executable.
+
+`taste-skill`: `./scripts/fetch-session.sh --skill taste-skill` fetches guidance and scripts to a temporary directory; it does not install dependencies or run scripts. Its asset helper uses network access and requires user approval before use.
 
 ## references
 

@@ -23,6 +23,9 @@ SCHOLAR_SHA="d394fb599ed9e6ea2212a9e6daa864345fe97a26"
 IMPECCABLE_URL="https://github.com/pbakaus/impeccable.git"
 IMPECCABLE_SHA="e89e3ada3e875a89ac2c5d33d11e65ebef6fe285"
 
+TASTE_URL="https://github.com/Leonxlnx/taste-skill.git"
+TASTE_SHA=""
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
@@ -31,6 +34,7 @@ docling|$DOCLING_URL|$DOCLING_SHA|docling/.agents/skills/docling
 citation-management|$CITATION_URL|$CITATION_SHA|skills/citation-management
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
+taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
 '
 
 OUT="" LICENSES_OUT="" PICK=()

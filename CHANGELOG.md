@@ -6,6 +6,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/web`: Add session skill `taste-skill` from `Leonxlnx/taste-skill`, fetched per session.
 - `research/web`: Add session skill `impeccable` from `pbakaus/impeccable`, fetched per session.
 - `research/paper`: Add session skill `citation-verification` from `galaxy-dawn/claude-scholar`, fetched per session.
 - `research/paper`: Add session skill `citation-management` from `K-Dense-AI/scientific-agent-skills`, fetched per session.
