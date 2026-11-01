@@ -61,6 +61,7 @@ write-in-my-voice|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills
 stakeholder-investor-reports|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/stakeholder-investor-reports
 survey-generator|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/survey-generator
 academic-paper|$ARS_URL|$ARS_SHA|academic-paper
+academic-paper-reviewer|$ARS_URL|$ARS_SHA|academic-paper-reviewer
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
@@ -109,11 +110,39 @@ grab() { # url sha path dest
     rm -rf "$OUT/$dest"
     cp -R "$dir/$path" "$OUT/$dest"
     if [ "$url" = "$ARS_URL" ]; then
-      git -C "$dir" sparse-checkout set "$path" shared /scripts/run_codex_audit.sh
+      local -a reviewer_files=()
+      local -a extra_paths=()
+      if [ "$dest" = "academic-paper-reviewer" ]; then
+        reviewer_files=(
+          scripts/audit_panel_claims.py
+          scripts/check_acronyms.py
+          scripts/check_panel_synthesis.py
+          scripts/check_phase_conformance.py
+          scripts/check_pipeline_integrity.py
+          scripts/check_sprint_contract.py
+          scripts/review_panel_provenance.py
+          scripts/verify_panel_recommendations.py
+          scripts/dispatch_panel_claim_audit.py
+          scripts/extract_panel_claims.py
+          scripts/recompute_receipts.py
+          evals/heldout/panel_claim_factuality/prompts/auditor.md
+          deep-research/agents/socratic_mentor_agent.md
+          docs/DATA_FLOWS.md
+          docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
+        )
+        for file in "${reviewer_files[@]}"; do
+          extra_paths+=("/$file")
+        done
+      fi
+      git -C "$dir" sparse-checkout set "$path" shared /scripts/run_codex_audit.sh "${extra_paths[@]}"
       git -C "$dir" checkout -q FETCH_HEAD
       mkdir -p "$OUT/shared" "$OUT/scripts"
       cp -R "$dir/shared/." "$OUT/shared/"
       cp "$dir/scripts/run_codex_audit.sh" "$OUT/scripts/run_codex_audit.sh"
+      for file in "${reviewer_files[@]}"; do
+        mkdir -p "$OUT/${file%/*}"
+        cp "$dir/$file" "$OUT/$file"
+      done
     fi
   fi
   if [ -n "$LICENSES_OUT" ]; then

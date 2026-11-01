@@ -6,6 +6,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/paper`: Add `academic-paper-reviewer` with session-scoped runtime dependencies, non-commercial use, and explicit data-egress safeguards.
 - `research/paper`: Add `academic-paper` from `Imbad0202/academic-research-skills` as a non-commercial, session-only skill.
 - `research/paper`: Add session skill `survey-generator` for source-verified AI/ML survey drafts, fetched per session.
 - `research/paper`: Add session skill `humanizer` from `blader/humanizer`, fetched per session.
