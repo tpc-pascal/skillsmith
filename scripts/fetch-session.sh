@@ -36,7 +36,7 @@ AVOIDAI_URL="https://github.com/conorbronsdon/avoid-ai-writing.git"
 AVOIDAI_SHA="3af81e358f17dac2975ddd1158e9fb138a3d2f8b"
 
 HUMANIZER_URL="https://github.com/blader/humanizer.git"
-HUMANIZER_SHA="8c307f367c91bd974002f10f2be2965d642c13df"
+HUMANIZER_SHA="0ef9fe5bc3572734fd3ae6c448fe00a30cd5dcf0"
 
 AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
 AAS_SHA="6f819e34e3847c4a9a4715409ec4d76b0ad42bdb"
