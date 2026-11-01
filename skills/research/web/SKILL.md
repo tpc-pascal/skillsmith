@@ -18,6 +18,7 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 |Read a public page|Built-in browser or `curl`|—|
 |Search public web sources|A user-approved search provider|—|
 |Read public social content unavailable to built-in tools|Session-fetched `agent-reach`, only after provider and request are approved|`agent-reach`|
+|Frontend design work explicitly requested by the user|Session-fetched `impeccable`; use its guidance only|`impeccable`|
 |Read a video or extract captions|Skill `media` (`watch`) or local `yt-dlp` captions|`watch`|
 
 ## Rules
@@ -31,10 +32,13 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 7. Network search and retrieval require connectivity; do not silently switch providers after a failure.
 8. For media, hand off to `media`; for reports, confirm requirements with `orchestrator` before handing off to `paper`.
 9. Translate only relevant passages and preserve attribution and uncertainty; see [`references/translation.md`](references/translation.md).
+10. Use `impeccable` only for an explicitly requested frontend design task. Its setup can download and run a binary; do not install, download, or execute it without the user's explicit approval, and do not change files outside the requested UI scope.
 
 ## Third-party skills (fetched per session)
 
 `agent-reach`: `./scripts/fetch-session.sh --skill agent-reach` fetches the integration to a temporary directory; use only the public, read-only behavior allowed by these rules.
+
+`impeccable`: `./scripts/fetch-session.sh --skill impeccable` fetches design guidance to a temporary directory. Review its setup instructions before use; fetching does not install or run its bundled executable.
 
 ## references
 
