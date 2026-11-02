@@ -15,7 +15,7 @@ DOCLING_URL="https://github.com/docling-project/docling.git"
 DOCLING_SHA="07154cdc82500058ad9377bac92beed3de820458"
 
 CITATION_URL="https://github.com/K-Dense-AI/scientific-agent-skills.git"
-CITATION_SHA="5f2bc0341354fd5590aef76a533ada1e1e5b4e62"
+CITATION_SHA="a25cf9ec00e2745d03f8704acf6f6919694ccd9a"
 
 SCHOLAR_URL="https://github.com/galaxy-dawn/claude-scholar.git"
 SCHOLAR_SHA="d394fb599ed9e6ea2212a9e6daa864345fe97a26"
@@ -33,16 +33,16 @@ PPT_URL="https://github.com/hugohe3/ppt-master.git"
 PPT_SHA="5e8856be0da8e6bc85c4aa28acc614478f7b7137"
 
 AVOIDAI_URL="https://github.com/conorbronsdon/avoid-ai-writing.git"
-AVOIDAI_SHA="3af81e358f17dac2975ddd1158e9fb138a3d2f8b"
+AVOIDAI_SHA="933496df3bc0b06b3552f92a0be5f9f5e0f7f608"
 
 HUMANIZER_URL="https://github.com/blader/humanizer.git"
 HUMANIZER_SHA="0ef9fe5bc3572734fd3ae6c448fe00a30cd5dcf0"
 
 AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
-AAS_SHA="6f819e34e3847c4a9a4715409ec4d76b0ad42bdb"
+AAS_SHA="8aa412398110762dfbf7a88af66cadcf3985f64e"
 
 ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
-ARS_SHA="3970a91de7527b2e6149a48537b9ef6a876ef806"
+ARS_SHA="2e02041a3b821a160d98c9398f173c484ac759a8"
 
 # name|url|sha|skill path in the repo
 TABLE='
