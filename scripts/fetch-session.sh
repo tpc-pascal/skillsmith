@@ -64,6 +64,7 @@ academic-paper|$ARS_URL|$ARS_SHA|academic-paper
 academic-paper-reviewer|$ARS_URL|$ARS_SHA|academic-paper-reviewer
 academic-pipeline|$ARS_URL|$ARS_SHA|academic-pipeline
 academic-deep-research|$ARS_URL|$ARS_SHA|deep-research
+sr-screener|$ARS_URL|$ARS_SHA|sr-screener
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
