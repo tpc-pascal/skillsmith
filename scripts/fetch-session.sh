@@ -42,7 +42,7 @@ AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
 AAS_SHA="8aa412398110762dfbf7a88af66cadcf3985f64e"
 
 LAST30_URL="https://github.com/mvanhorn/last30days-skill.git"
-LAST30_SHA="7efc0ef764765ed9ceff5ce1204462b35b89d680"
+LAST30_SHA="6894d44e088c449ecdd7246a18763fddba1ff805"
 
 ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
 ARS_SHA="2e02041a3b821a160d98c9398f173c484ac759a8"
