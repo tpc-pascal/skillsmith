@@ -27,6 +27,7 @@ Third-party skills are fetched with `scripts/fetch-session.sh` (URL + commit-SHA
 | `statistical-analysis` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Test selection, assumptions, effect sizes, and uncertainty |
 | `matplotlib` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Local scientific plotting and figure export |
 | `efficient-web-research` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | Efficient, targeted public web research |
+| `last30days` | [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | Recent public discussion research; review scripts and require provider/data/budget approval, with no cookies, credentials, or restricted sources (MIT) |
 | `wiki-researcher` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | Evidence-based codebase and architecture explanations |
 | `tech-writing-proofread` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | English technical proofreading suggestions |
 | `write-in-my-voice` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | User-authorized social post drafting in the user's voice |

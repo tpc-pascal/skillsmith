@@ -41,6 +41,9 @@ HUMANIZER_SHA="0ef9fe5bc3572734fd3ae6c448fe00a30cd5dcf0"
 AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
 AAS_SHA="8aa412398110762dfbf7a88af66cadcf3985f64e"
 
+LAST30_URL="https://github.com/mvanhorn/last30days-skill.git"
+LAST30_SHA="7efc0ef764765ed9ceff5ce1204462b35b89d680"
+
 ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
 ARS_SHA="2e02041a3b821a160d98c9398f173c484ac759a8"
 
@@ -60,6 +63,7 @@ tech-writing-proofread|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/s
 write-in-my-voice|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/write-in-my-voice
 stakeholder-investor-reports|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/stakeholder-investor-reports
 survey-generator|$AAS_URL|$AAS_SHA|plugins/agentic-awesome-skills-claude/skills/survey-generator
+last30days|$LAST30_URL|$LAST30_SHA|skills/last30days
 academic-paper|$ARS_URL|$ARS_SHA|academic-paper
 academic-paper-reviewer|$ARS_URL|$ARS_SHA|academic-paper-reviewer
 academic-pipeline|$ARS_URL|$ARS_SHA|academic-pipeline

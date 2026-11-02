@@ -18,6 +18,7 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 |Read a public page|Built-in browser or `curl`|—|
 |Search public web sources|A user-approved search provider|—|
 |Targeted public research|Session-fetched `efficient-web-research`; approved provider only|`efficient-web-research`|
+|Recent public discussion across social platforms|Session-fetched `last30days`; source/provider approval required|`last30days`|
 |Explain a software architecture from source|Session-fetched `wiki-researcher`, for authorized repositories|`wiki-researcher`|
 |Read public social content unavailable to built-in tools|Session-fetched `agent-reach`, only after provider and request are approved|`agent-reach`|
 |Frontend design work explicitly requested by the user|Session-fetched `impeccable`; use its guidance only|`impeccable`|
@@ -40,15 +41,9 @@ Use local or built-in tools first. Network retrieval requires connectivity; offl
 
 ## Third-party skills (fetched per session)
 
-`agent-reach`: `./scripts/fetch-session.sh --skill agent-reach` fetches the integration to a temporary directory; use only the public, read-only behavior allowed by these rules.
+Fetch only on request; fetching does not install or run scripts. `agent-reach` is public/read-only. Review `impeccable` setup; do not run its binary without approval. `taste-skill` asset downloads require approval. `efficient-web-research` requires an approved provider. Use `wiki-researcher` only for authorized repositories, read-only, without executing code or exposing secrets.
 
-`impeccable`: `./scripts/fetch-session.sh --skill impeccable` fetches design guidance to a temporary directory. Review its setup instructions before use; fetching does not install or run its bundled executable.
-
-`taste-skill`: `./scripts/fetch-session.sh --skill taste-skill` fetches guidance and scripts to a temporary directory; it does not install dependencies or run scripts. Its asset helper uses network access and requires user approval before use.
-
-`efficient-web-research`: fetches public research guidance to a temporary directory; follow the provider approval and untrusted-content rules above.
-
-`wiki-researcher`: fetches codebase-analysis guidance to a temporary directory. Use only on repositories the user is authorized to inspect; analyze read-only, never execute the inspected code, and do not expose secrets or credentials.
+`last30days`: review scripts before use; public, cookie-free sources only. Never read browser sessions, cookies, `.env`, keychains, or saved credentials. Require explicit provider, data-scope, and budget approval; do not bypass access controls or publish without separate approval.
 
 ## references
 
