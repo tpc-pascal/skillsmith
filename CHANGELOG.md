@@ -6,6 +6,7 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/paper`: Add `sr-screener` as a non-commercial, request-only session skill with local-data and explicit provider/model/budget approval safeguards.
 - `research/paper`: Add `academic-deep-research` with session-scoped runtime dependencies, non-commercial use, and search egress safeguards.
 - `research/paper`: Add `academic-pipeline` with session-scoped runtime dependencies and non-commercial use safeguards.
 - `research/paper`: Add `academic-paper-reviewer` with session-scoped runtime dependencies, non-commercial use, and explicit data-egress safeguards.
