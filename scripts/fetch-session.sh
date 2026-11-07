@@ -9,10 +9,10 @@ WATCH_URL="https://github.com/bradautomates/claude-video.git"
 WATCH_SHA="03ceb42f7fa2c4439aca01752118044baabffb8f"
 
 AGENTREACH_URL="https://github.com/Panniantong/Agent-Reach.git"
-AGENTREACH_SHA="7a38047acf26a729cbb27851e3cb81639da86b29"
+AGENTREACH_SHA="422478ae0264d2236bf7ebd1c3b11a69aaafa4a3"
 
 DOCLING_URL="https://github.com/docling-project/docling.git"
-DOCLING_SHA="07154cdc82500058ad9377bac92beed3de820458"
+DOCLING_SHA="bcb3678fad7426549643f54c5eceab77925ac5c1"
 
 CITATION_URL="https://github.com/K-Dense-AI/scientific-agent-skills.git"
 CITATION_SHA="a25cf9ec00e2745d03f8704acf6f6919694ccd9a"
@@ -21,31 +21,31 @@ SCHOLAR_URL="https://github.com/galaxy-dawn/claude-scholar.git"
 SCHOLAR_SHA="d394fb599ed9e6ea2212a9e6daa864345fe97a26"
 
 IMPECCABLE_URL="https://github.com/pbakaus/impeccable.git"
-IMPECCABLE_SHA="e89e3ada3e875a89ac2c5d33d11e65ebef6fe285"
+IMPECCABLE_SHA="687bc381bc9091bf252c0a05303640561014a425"
 
 TASTE_URL="https://github.com/Leonxlnx/taste-skill.git"
-TASTE_SHA="12af471f627f866411b4bd785b19646d3672784c"
+TASTE_SHA="9b4bf937a1f69348126959c15d2f99a73e65699b"
 
 ARCHIFY_URL="https://github.com/tt-a1i/archify.git"
 ARCHIFY_SHA="a4065941f12be7967436261d9934784e381d423c"
 
 PPT_URL="https://github.com/hugohe3/ppt-master.git"
-PPT_SHA="5e8856be0da8e6bc85c4aa28acc614478f7b7137"
+PPT_SHA="769547394107870a0c7b5ad8d1c0c75035123aef"
 
 AVOIDAI_URL="https://github.com/conorbronsdon/avoid-ai-writing.git"
-AVOIDAI_SHA="933496df3bc0b06b3552f92a0be5f9f5e0f7f608"
+AVOIDAI_SHA="30971f1c50c6412a0c414e8c7b15032a32b21939"
 
 HUMANIZER_URL="https://github.com/blader/humanizer.git"
 HUMANIZER_SHA="0ef9fe5bc3572734fd3ae6c448fe00a30cd5dcf0"
 
 AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
-AAS_SHA="8aa412398110762dfbf7a88af66cadcf3985f64e"
+AAS_SHA="828257c3037dc7c3c3ec987decc5a603025a0ce5"
 
 LAST30_URL="https://github.com/mvanhorn/last30days-skill.git"
-LAST30_SHA="6894d44e088c449ecdd7246a18763fddba1ff805"
+LAST30_SHA="71dc2a1529f23dfe7b0d0e3b3e11d4a7e8afd428"
 
 ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
-ARS_SHA="2e02041a3b821a160d98c9398f173c484ac759a8"
+ARS_SHA="6d9388674de1ad0437ad95db3d52f92b92204d84"
 
 # name|url|sha|skill path in the repo
 TABLE='
