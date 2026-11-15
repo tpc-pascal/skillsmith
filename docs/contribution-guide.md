@@ -1,36 +1,35 @@
-# 📚 Skillsmith Complete Contribution & Commit Guide
+# Skillsmith Contribution Guide
 
 > **Version**: 1.0.0  
 > **Last Updated**: 2026-11-15  
-> **Source**: Combined from [skillsmith](https://github.com/tpc-pascal/skillsmith) official documentation  
-> **Purpose**: Single source of truth for all contribution, commit, and third-party skill management rules
+> **Source**: Combined from official [skillsmith](https://github.com/tpc-pascal/skillsmith) documentation  
+> **Purpose**: Single source of truth for all contribution rules and workflows
 
 ---
 
 ## 📌 TABLE OF CONTENTS
 
-1. [Repository Overview](#1-repository-overview)
+1. [Overview](#1-overview)
 2. [Repository Structure](#2-repository-structure)
 3. [Skill File Structure](#3-skill-file-structure)
-4. [Third-Party Skills Management](#4-third-party-skills-management)
+4. [Third-Party Skills](#4-third-party-skills)
 5. [Commit Conventions](#5-commit-conventions)
 6. [Change Grouping Rules](#6-change-grouping-rules)
 7. [Delivery Workflow](#7-delivery-workflow)
-8. [Validation Requirements](#8-validation-requirements)
-9. [Complete Workflow Examples](#9-complete-workflow-examples)
-10. [Common Mistakes & Fixes](#10-common-mistakes--fixes)
-11. [Quick Reference Commands](#11-quick-reference-commands)
+8. [Validation](#8-validation)
+9. [Workflow Examples](#9-workflow-examples)
+10. [Quick Reference](#10-quick-reference)
 
 ---
 
-## 1. 🏗️ Repository Overview
+## 1. Overview
 
 ### 1.1 Purpose
 Skillsmith is a collection of **self-contained, independently installable agent skills** organized into collections. Each collection contains multiple skills that can be installed and used independently.
 
 ### 1.2 Key Principles
 - **Self-contained**: Each collection and skill installs independently
-- **Session-scoped third-party skills**: Third-party skills are fetched per session via `scripts/fetch-session.sh`, never installed permanently
+- **Session-scoped third-party skills**: Fetched per session via `scripts/fetch-session.sh`, never installed permanently
 - **Local-first**: Local CLIs for local files; web sources and APIs require connectivity
 - **OpenCode discovery**: Skills are discovered through `.agents/skills/` symlinks
 
@@ -41,7 +40,7 @@ Skillsmith is a collection of **self-contained, independently installable agent 
 
 ---
 
-## 2. 📁 Repository Structure
+## 2. Repository Structure
 
 ```text
 .
@@ -76,7 +75,7 @@ Skillsmith is a collection of **self-contained, independently installable agent 
 
 ---
 
-## 3. 📄 Skill File Structure
+## 3. Skill File Structure
 
 ### 3.1 SKILL.md Format
 
@@ -141,7 +140,7 @@ See [reference-file.md](./references/reference-file.md) for details.
 
 ---
 
-## 4. 🔗 Third-Party Skills Management
+## 4. Third-Party Skills
 
 ### 4.1 Overview
 Third-party skills are **fetched per session** and **never installed permanently**. They are defined in `scripts/fetch-session.sh`.
@@ -206,6 +205,8 @@ bash scripts/fetch-session.sh --skill new-skill --out /tmp/test
 | watch | bradautomates/claude-video | 03ceb42f | skills/watch |
 | agent-reach | Panniantong/Agent-Reach | 7a38047a | agent_reach/skill |
 | docling | docling-project/docling | 07154cdc | docling/.agents/skills/docling |
+| docx | anthropics/skills | ca45fc49 | skills/docx |
+| pdf | anthropics/skills | ca45fc49 | skills/pdf |
 | citation-management | K-Dense-AI/scientific-agent-skills | a25cf9ec | skills/citation-management |
 | litreview | K-Dense-AI/scientific-agent-skills | a25cf9ec | skills/literature-review |
 | exploratory-data-analysis | K-Dense-AI/scientific-agent-skills | a25cf9ec | skills/exploratory-data-analysis |
@@ -224,6 +225,7 @@ bash scripts/fetch-session.sh --skill new-skill --out /tmp/test
 | academic-deep-research | Imbad0202/academic-research-skills | 2e02041a | deep-research |
 | sr-screener | Imbad0202/academic-research-skills | 2e02041a | sr-screener |
 | citation-verification | galaxy-dawn/claude-scholar | d394fb59 | skills/citation-verification |
+| deep-research | asgeirtj/system_prompts_leaks | 50a261eb | Anthropic/claude-code/skills/anthropic-skills/deep-research |
 | archify | tt-a1i/archify | a4065941 | archify |
 | impeccable | pbakaus/impeccable | e89e3ada | .agents/skills/impeccable |
 | ppt-master | hugohe3/ppt-master | 5e8856be | skills/ppt-master |
@@ -233,7 +235,7 @@ bash scripts/fetch-session.sh --skill new-skill --out /tmp/test
 
 ---
 
-## 5. ✍️ Commit Conventions
+## 5. Commit Conventions
 
 ### 5.1 Format
 
@@ -296,7 +298,7 @@ Co-authored-by: Copilot  # ❌ Not allowed
 
 ---
 
-## 6. 📦 Change Grouping Rules
+## 6. Change Grouping Rules
 
 ### 6.1 One Skill Per Commit
 ✅ **DO**: Each third-party session skill in exactly one `feat` commit  
@@ -334,7 +336,7 @@ Each skill commit **MUST** include:
 
 ---
 
-## 7. 🔄 Delivery Workflow
+## 7. Delivery Workflow
 
 ### 7.1 For Maintainers (tpc-pascal)
 
@@ -432,7 +434,7 @@ chore(pins): bump third-party skill SHAs to upstream HEAD (#48)
 
 ---
 
-## 8. ✅ Validation Requirements
+## 8. Validation
 
 ### 8.1 Before Committing
 
@@ -484,7 +486,7 @@ bash scripts/smoke.sh
 
 ---
 
-## 9. 🎯 Complete Workflow Examples
+## 9. Workflow Examples
 
 ### 9.1 Example 1: Adding a New Third-Party Skill (Maintainer)
 
@@ -578,175 +580,9 @@ git push origin main
 
 ---
 
-### 9.3 Example 3: External Contributor Workflow
+## 10. Quick Reference
 
-**Goal**: Contribute a new skill as external contributor
-
-#### Step 1: Fork Repository
-- Go to https://github.com/tpc-pascal/skillsmith
-- Click **Fork** button
-- Clone your fork:
-  ```bash
-  git clone https://github.com/your-username/skillsmith.git
-  cd skillsmith
-  ```
-
-#### Step 2: Create Feature Branch
-```bash
-git checkout -b feat/add-new-skill
-```
-
-#### Step 3: Make Changes
-```bash
-# Edit fetch-session.sh to add your skill
-nano scripts/fetch-session.sh
-```
-
-#### Step 4: Commit
-```bash
-git add scripts/fetch-session.sh
-git commit -m "feat(research:folder:skill): add owner/repo session skill
-
-Work done:
-- Add URL and SHA variables.
-- Add skill entry to TABLE.
-
-Effect:
-- skill is now available for session fetching.
-
-Benefits:
-- Explains what the skill enables.
-
-Files changed: scripts/fetch-session.sh
-Co-authored-by: pascal-automation-agent[bot] <348848148+pascal-automation-agent[bot]@users.noreply.github.com>"
-```
-
-#### Step 5: Push and Create PR
-```bash
-git push origin feat/add-new-skill
-```
-- Go to your fork on GitHub
-- Click **Pull Requests** → **New Pull Request**
-- Base: `tpc-pascal/skillsmith:main`
-- Compare: `your-username/skillsmith:feat/add-new-skill`
-- Click **Create Pull Request**
-
----
-
-## 10. ❌ Common Mistakes & Fixes
-
-### 10.1 Mistake: Multiple Skills in One Commit
-
-**❌ Wrong**:
-```bash
-git commit -m "feat: add docx, pdf, deep-research"
-```
-
-**✅ Fix**:
-```bash
-# Reset the commit
-git reset HEAD~1
-
-# Create separate commits
-git add -p scripts/fetch-session.sh  # Select docx changes
-git commit -m "feat(research:doc:docx): ..."
-
-git add -p scripts/fetch-session.sh  # Select pdf changes
-git commit -m "feat(research:doc:pdf): ..."
-
-git add -p scripts/fetch-session.sh  # Select deep-research changes
-git commit -m "feat(research:web:deep-research): ..."
-```
-
-### 10.2 Mistake: Missing Sections in Commit Message
-
-**❌ Wrong**:
-```bash
-git commit -m "feat(research:doc:docx): add anthropics/skills"
-```
-
-**✅ Fix**:
-```bash
-git commit --amend -m "feat(research:doc:docx): add anthropics/skills session skill
-
-Work done:
-- Add AS_URL and AS_SHA variables.
-
-Effect:
-- docx skill is now available.
-
-Benefits:
-- Enables DOCX processing.
-
-Files changed: scripts/fetch-session.sh
-Co-authored-by: pascal-automation-agent[bot] <348848148+pascal-automation-agent[bot]@users.noreply.github.com>"
-```
-
-### 10.3 Mistake: Wrong Co-author
-
-**❌ Wrong**:
-```bash
-git commit -m "...
-Co-Authored-By: Claude Code <noreply@anthropic.com>"
-```
-
-**✅ Fix**:
-```bash
-git commit --amend -m "...
-Co-authored-by: pascal-automation-agent[bot] <348848148+pascal-automation-agent[bot]@users.noreply.github.com>"
-```
-
-### 10.4 Mistake: Pushing Directly Without Permission
-
-**❌ Wrong**:
-```bash
-git push origin main  # Permission denied
-```
-
-**✅ Fix**:
-```bash
-# Create feature branch
-git checkout -b feat/add-skill
-git push origin feat/add-skill
-# Create PR on GitHub
-```
-
-### 10.5 Mistake: Not Running smoke.sh
-
-**❌ Wrong**:
-```bash
-# Skip validation
-git commit -m "..."
-git push origin main
-```
-
-**✅ Fix**:
-```bash
-# Always run validation first
-bash scripts/smoke.sh
-git commit -m "..."
-git push origin main
-```
-
-### 10.6 Mistake: Wrong Scope Format
-
-**❌ Wrong**:
-```bash
-git commit -m "feat: add docx skill"
-git commit -m "feat(docx): add skill"
-git commit -m "feat(research): add docx"
-```
-
-**✅ Correct**:
-```bash
-git commit -m "feat(research:doc:docx): add anthropics/skills session skill"
-```
-
----
-
-## 11. 💻 Quick Reference Commands
-
-### 11.1 Git Commands
+### 10.1 Git Commands
 
 | Action | Command |
 |--------|---------|
@@ -756,13 +592,8 @@ git commit -m "feat(research:doc:docx): add anthropics/skills session skill"
 | Commit | `git commit -m "feat(...): ..."` |
 | Push | `git push origin branch-name` |
 | Pull | `git pull origin main` |
-| Reset last commit | `git reset HEAD~1` |
-| Amend commit | `git commit --amend -m "..."` |
-| View log | `git log --oneline -10` |
-| View changes | `git diff scripts/fetch-session.sh` |
-| View commit details | `git show HEAD` |
 
-### 11.2 Validation Commands
+### 10.2 Validation Commands
 
 | Action | Command |
 |--------|---------|
@@ -770,50 +601,26 @@ git commit -m "feat(research:doc:docx): add anthropics/skills session skill"
 | Check Bash syntax | `bash -n scripts/fetch-session.sh` |
 | List third-party skills | `bash scripts/fetch-session.sh --list` |
 | Fetch all skills | `bash scripts/fetch-session.sh --all --out /tmp/skills` |
-| Fetch specific skill | `bash scripts/fetch-session.sh --skill docx --out /tmp/skill` |
-| Check license sync | `python3 scripts/sync-licenses.py --check` |
 
-### 11.3 Utility Commands
+### 10.3 Key Rules
 
-| Action | Command |
-|--------|---------|
-| Update SHAs | `bash scripts/bump-pins.sh --check` |
-| Update SHAs and write | `bash scripts/bump-pins.sh --write` |
-| Create release | `bash scripts/release.sh vX.Y.Z` |
-| Install collection | `bash scripts/install.sh research` |
+- ✅ **1 skill = 1 commit** (for third-party skills)
+- ✅ **Conventional Commits format**: `type(scope): summary`
+- ✅ **4 sections**: Work done, Effect, Benefits, Files changed
+- ✅ **Co-author**: `pascal-automation-agent[bot] <348848148+...>`
+- ✅ **Run smoke.sh** before committing
 
 ---
 
 ## 📚 References
 
 1. [Skillsmith Repository](https://github.com/tpc-pascal/skillsmith)
-2. [Conventional Commits](https://www.conventionalcommits.org/)
-3. [GitHub Co-authored Commits](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors)
-4. [Semantic Versioning](https://semver.org/)
+2. [Official Commit Conventions](docs/commit-conventions.md)
+3. [Official Repository Conventions](docs/repository-conventions.md)
+4. [Contributing Guide](CONTRIBUTING.md)
+5. [Conventional Commits](https://www.conventionalcommits.org/)
+6. [GitHub Co-authored Commits](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors)
 
 ---
 
-## 🎓 Summary Checklist
-
-### Before Committing
-- [ ] Follow Conventional Commits format
-- [ ] Use correct type and scope
-- [ ] Include all 4 sections (Work done, Effect, Benefits, Files changed)
-- [ ] Add correct co-author trailer
-- [ ] 1 third-party skill per commit
-- [ ] Run `bash scripts/smoke.sh`
-
-### Before Pushing
-- [ ] All commits follow the rules
-- [ ] All validations pass
-- [ ] If maintainer: push to main
-- [ ] If contributor: push to feature branch and create PR
-
-### After Pushing
-- [ ] Verify on GitHub
-- [ ] Check CI/CD passes
-- [ ] Update CHANGELOG.md if needed
-
----
-
-**💡 Note**: This guide is based on the official Skillsmith documentation. Always refer to the latest version of [commit-conventions.md](https://github.com/tpc-pascal/skillsmith/blob/main/docs/commit-conventions.md) and [repository-conventions.md](https://github.com/tpc-pascal/skillsmith/blob/main/docs/repository-conventions.md) for the most up-to-date rules.
+**💡 Note**: This guide is based on the official Skillsmith documentation. Always refer to the latest version of [commit-conventions.md](docs/commit-conventions.md) and [repository-conventions.md](docs/repository-conventions.md) for the most up-to-date rules.
