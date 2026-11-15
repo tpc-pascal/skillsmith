@@ -172,6 +172,47 @@ Never add `Co-authored-by: Copilot`.
 - Upstream pin and license inventory updates are handled by their existing workflows and reviewed through the pull requests they create. Do not bypass these workflows with manual updates.
 - Prepare a release through a pull request that updates the changelog; after it is merged, run `scripts/release.sh vX.Y.Z` from a clean, up-to-date `main`.
 
+### 2.4 Automated Workflows for Third-Party Skills
+
+When a third-party skill is added to `scripts/fetch-session.sh`, the following automated workflows will trigger:
+
+#### 1. **sync-pins.yml** (Runs on push to main or schedule)
+- **Trigger**: When `scripts/fetch-session.sh` is modified
+- **Action**: Automatically updates SHA pins to match upstream HEAD
+- **Pull Request**: Creates `chore/sync-pins` branch with PR titled:
+  ```
+  chore(pins): bump third-party skill SHAs to upstream HEAD
+  ```
+- **Frequency**: Runs daily at 03:23 UTC or on manual trigger
+- **Purpose**: Ensures all third-party skills are pinned to the latest upstream commit
+
+#### 2. **sync-licenses.yml** (Runs on push to main or schedule)
+- **Trigger**: When `scripts/fetch-session.sh` or `LICENSE` is modified
+- **Action**: Syncs third-party license declarations from upstream SKILL.md files
+- **Pull Request**: Creates `chore/sync-licenses` branch with PR titled:
+  ```
+  chore(licenses): sync third-party skill declarations
+  ```
+- **Frequency**: Runs every Monday at 04:41 UTC or on manual trigger
+- **Purpose**: Maintains accurate license inventory for all third-party skills
+- **Note**: Waits for pin sync to complete first (checks for empty SHAs)
+
+#### 3. **ci.yml** (Runs on every push and PR)
+- **Trigger**: Every push to any branch or pull request
+- **Action**: Runs `bash scripts/smoke.sh` to validate:
+  - Bash syntax in all scripts
+  - SKILL.md frontmatter and placement
+  - Platform discovery links
+  - Secrets detection
+  - Markdown structure
+  - Skill template constraints
+- **Purpose**: Ensures code quality and prevents breaking changes
+
+#### 4. **release.yml** (Runs on tag push)
+- **Trigger**: When a tag matching `v*` is pushed
+- **Action**: Creates GitHub Release from CHANGELOG.md section
+- **Purpose**: Automates release publishing with proper changelog notes
+
 ### 2.4 Releases
 
 - Use Semantic Versioning. Release versions apply to the repository, not to an individual collection or skill; do not create collection- or skill-level tags.
@@ -533,6 +574,12 @@ git push origin feat/add-docx-pdf-deep-research
 chore(licenses): sync third-party skill declarations (#45)
 chore(pins): bump third-party skill SHAs to upstream HEAD (#48)
 ```
+
+**Automated PRs created when adding a third-party skill:**
+1. **sync-pins PR** (`chore/sync-pins` branch): Updates SHA to upstream HEAD
+2. **sync-licenses PR** (`chore/sync-licenses` branch): Updates LICENSE file with third-party declarations
+
+**Note**: The sync-licenses workflow waits for sync-pins to complete first, ensuring all SHAs are valid before syncing licenses.
 
 ---
 
