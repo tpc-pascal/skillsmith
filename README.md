@@ -33,7 +33,7 @@ Collections live under `skills/`. See the [research collection](skills/research/
     <tr>
       <td><a href="skills/research/doc/SKILL.md"><code>doc</code></a></td>
       <td>Read/convert PDF, DOCX, and XLSX</td>
-      <td><a href="https://github.com/docling-project/docling">docling-project/docling</a> — <code>docling</code><br><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>exploratory-data-analysis</code><br><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>statistical-analysis</code><br><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>matplotlib</code></td>
+      <td><a href="https://github.com/docling-project/docling">docling-project/docling</a> — <code>docling</code><br><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>exploratory-data-analysis</code><br><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>statistical-analysis</code><br><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a> — <code>matplotlib</code><br><a href="https://github.com/anthropics/skills">anthropics/skills</a> — <code>pdf</code><br><a href="https://github.com/anthropics/skills">anthropics/skills</a> — <code>docx</code></td>
     </tr>
     <tr>
       <td><a href="skills/research/media/SKILL.md"><code>media</code></a></td>
@@ -43,7 +43,7 @@ Collections live under `skills/`. See the [research collection](skills/research/
     <tr>
       <td><a href="skills/research/web/SKILL.md"><code>web</code></a></td>
       <td>Read and search online sources</td>
-      <td><a href="https://github.com/Panniantong/Agent-Reach">Panniantong/Agent-Reach</a> — <code>agent-reach</code><br><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a> — <code>impeccable</code><br><a href="https://github.com/Leonxlnx/taste-skill">Leonxlnx/taste-skill</a> — <code>taste-skill</code><br><a href="https://github.com/sickn33/agentic-awesome-skills">sickn33/agentic-awesome-skills</a> — <code>efficient-web-research</code><br><a href="https://github.com/sickn33/agentic-awesome-skills">sickn33/agentic-awesome-skills</a> — <code>wiki-researcher</code><br><a href="https://github.com/mvanhorn/last30days-skill">mvanhorn/last30days-skill</a> — <code>last30days</code> (MIT)</td>
+      <td><a href="https://github.com/Panniantong/Agent-Reach">Panniantong/Agent-Reach</a> — <code>agent-reach</code><br><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a> — <code>impeccable</code><br><a href="https://github.com/Leonxlnx/taste-skill">Leonxlnx/taste-skill</a> — <code>taste-skill</code><br><a href="https://github.com/sickn33/agentic-awesome-skills">sickn33/agentic-awesome-skills</a> — <code>efficient-web-research</code><br><a href="https://github.com/sickn33/agentic-awesome-skills">sickn33/agentic-awesome-skills</a> — <code>wiki-researcher</code><br><a href="https://github.com/mvanhorn/last30days-skill">mvanhorn/last30days-skill</a> — <code>last30days</code> (MIT)<br><a href="https://github.com/asgeirtj/system_prompts_leaks">asgeirtj/system_prompts_leaks</a> — <code>deep-research</code></td>
     </tr>
     <tr>
       <td><a href="skills/research/paper/SKILL.md"><code>paper</code></a></td>

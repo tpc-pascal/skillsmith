@@ -6,6 +6,9 @@ This repository restarted its history on 2026-10-20. Commits, tags, and releases
 
 ## [Unreleased]
 
+- `research/web`: Add session-fetched `deep-research` from `asgeirtj/system_prompts_leaks` for deep research capabilities using system prompts.
+- `research/doc`: Add session-fetched `pdf` from `anthropics/skills` for PDF file processing capabilities.
+- `research/doc`: Add session-fetched `docx` from `anthropics/skills` for DOCX file processing capabilities.
 - `research/web`: Add session-fetched `last30days` for user-requested recent public discussion research, with provider/data/budget approvals and credential-free source restrictions.
 - `research/paper`: Add `sr-screener` as a non-commercial, request-only session skill with local-data and explicit provider/model/budget approval safeguards.
 - `research/paper`: Add `academic-deep-research` with session-scoped runtime dependencies, non-commercial use, and search egress safeguards.
