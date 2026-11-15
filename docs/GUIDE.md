@@ -542,7 +542,7 @@ graph TD
 ```bash
 # Fork the repository on GitHub
 # Clone your fork
-cd /home/tpc-pascal/Work
+cd $HOME/Work
 git clone https://github.com/your-username/skillsmith.git
 cd skillsmith
 
@@ -645,7 +645,7 @@ bash scripts/smoke.sh
 
 #### Step 1: Clone and Prepare
 ```bash
-cd /home/tpc-pascal/Work/skillsmith
+cd $HOME/Work/skillsmith
 git pull origin main
 git status  # Ensure clean working tree
 ```
