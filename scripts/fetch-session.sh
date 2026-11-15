@@ -47,11 +47,15 @@ LAST30_SHA="6894d44e088c449ecdd7246a18763fddba1ff805"
 ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
 ARS_SHA="2e02041a3b821a160d98c9398f173c484ac759a8"
 
+AS_URL="https://github.com/anthropics/skills.git"
+AS_SHA="ca45fc496a3436251f191354091d557da31c15b5"
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
 agent-reach|$AGENTREACH_URL|$AGENTREACH_SHA|agent_reach/skill
 docling|$DOCLING_URL|$DOCLING_SHA|docling/.agents/skills/docling
+docx|$AS_URL|$AS_SHA|skills/docx
 citation-management|$CITATION_URL|$CITATION_SHA|skills/citation-management
 litreview|$CITATION_URL|$CITATION_SHA|skills/literature-review
 exploratory-data-analysis|$CITATION_URL|$CITATION_SHA|skills/exploratory-data-analysis
