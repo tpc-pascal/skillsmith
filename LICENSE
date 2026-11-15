@@ -33,6 +33,8 @@ Review the upstream terms before redistributing any fetched skill.
 - `watch` — https://github.com/bradautomates/claude-video at `03ceb42f7fa2c4439aca01752118044baabffb8f` — MIT
 - `agent-reach` — https://github.com/Panniantong/Agent-Reach at `7a38047acf26a729cbb27851e3cb81639da86b29` — upstream LICENSE: MIT License
 - `docling` — https://github.com/docling-project/docling at `07154cdc82500058ad9377bac92beed3de820458` — MIT
+- `docx` — https://github.com/anthropics/skills at `ca45fc496a3436251f191354091d557da31c15b5` — Proprietary. LICENSE.txt has complete terms
+- `pdf` — https://github.com/anthropics/skills at `ca45fc496a3436251f191354091d557da31c15b5` — Proprietary. LICENSE.txt has complete terms
 - `citation-management` — https://github.com/K-Dense-AI/scientific-agent-skills at `a25cf9ec00e2745d03f8704acf6f6919694ccd9a` — MIT License
 - `litreview` — https://github.com/K-Dense-AI/scientific-agent-skills at `a25cf9ec00e2745d03f8704acf6f6919694ccd9a` — MIT license
 - `exploratory-data-analysis` — https://github.com/K-Dense-AI/scientific-agent-skills at `a25cf9ec00e2745d03f8704acf6f6919694ccd9a` — MIT
@@ -50,6 +52,7 @@ Review the upstream terms before redistributing any fetched skill.
 - `academic-pipeline` — https://github.com/Imbad0202/academic-research-skills at `2e02041a3b821a160d98c9398f173c484ac759a8` — CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
 - `academic-deep-research` — https://github.com/Imbad0202/academic-research-skills at `2e02041a3b821a160d98c9398f173c484ac759a8` — CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
 - `sr-screener` — https://github.com/Imbad0202/academic-research-skills at `2e02041a3b821a160d98c9398f173c484ac759a8` — CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
+- `deep-research` — https://github.com/asgeirtj/system_prompts_leaks at `50a261ebbea7942fa98254a583d02434fdfd03e7` — upstream LICENSE: Creative Commons Legal Code
 - `citation-verification` — https://github.com/galaxy-dawn/claude-scholar at `d394fb599ed9e6ea2212a9e6daa864345fe97a26` — upstream LICENSE: MIT License
 - `impeccable` — https://github.com/pbakaus/impeccable at `e89e3ada3e875a89ac2c5d33d11e65ebef6fe285` — upstream LICENSE: Apache License
 - `taste-skill` — https://github.com/Leonxlnx/taste-skill at `12af471f627f866411b4bd785b19646d3672784c` — upstream LICENSE: MIT License
