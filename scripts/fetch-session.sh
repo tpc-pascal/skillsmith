@@ -50,6 +50,9 @@ ARS_SHA="2e02041a3b821a160d98c9398f173c484ac759a8"
 AS_URL="https://github.com/anthropics/skills.git"
 AS_SHA="ca45fc496a3436251f191354091d557da31c15b5"
 
+ASG_URL="https://github.com/asgeirtj/system_prompts_leaks.git"
+ASG_SHA="50a261ebbea7942fa98254a583d02434fdfd03e7"
+
 # name|url|sha|skill path in the repo
 TABLE='
 watch|$WATCH_URL|$WATCH_SHA|skills/watch
@@ -74,6 +77,7 @@ academic-paper-reviewer|$ARS_URL|$ARS_SHA|academic-paper-reviewer
 academic-pipeline|$ARS_URL|$ARS_SHA|academic-pipeline
 academic-deep-research|$ARS_URL|$ARS_SHA|deep-research
 sr-screener|$ARS_URL|$ARS_SHA|sr-screener
+deep-research|$ASG_URL|$ASG_SHA|Anthropic/claude-code/skills/anthropic-skills/deep-research
 citation-verification|$SCHOLAR_URL|$SCHOLAR_SHA|skills/citation-verification
 impeccable|$IMPECCABLE_URL|$IMPECCABLE_SHA|.agents/skills/impeccable
 taste-skill|$TASTE_URL|$TASTE_SHA|skills/taste-skill
