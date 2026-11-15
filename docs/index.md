@@ -1,9 +1,9 @@
-# Skillsmith Documentation Hub
+# Skillsmith Complete Documentation
 
 > **Version**: 1.0.0  
 > **Last Updated**: 2026-11-15  
 > **Source**: Official [skillsmith](https://github.com/tpc-pascal/skillsmith) documentation  
-> **Purpose**: Single source of truth for repository conventions, commit rules, and contribution workflows
+> **Purpose**: Complete guide for repository structure, skill development, contribution workflows, and platform setup
 
 ---
 
@@ -21,6 +21,7 @@
 10. [Workflow Examples](#10-workflow-examples)
 11. [Quick Reference](#11-quick-reference)
 12. [Appendices](#12-appendices)
+13. [Platform Setup](#13-platform-setup)
 
 ---
 
@@ -734,4 +735,49 @@ git push origin main
 
 ---
 
-**💡 Note**: This document is the single source of truth for all repository conventions, commit rules, and contribution workflows. It consolidates the content from the original `commit-conventions.md` and `repository-conventions.md` files.
+--- 
+
+## 13. Platform Setup
+
+*This section provides setup guides for different platforms.*
+
+### 13.1 OpenCode Setup
+
+OpenCode discovers project skills from `.agents/skills/<name>/SKILL.md` (as well as `.opencode/skills/<name>/SKILL.md`) and user skills from `~/.config/opencode/skills/<name>/SKILL.md`. This is the currently supported integration; the shared skill collections are designed to grow to additional platforms over time.
+
+The shared skill source remains under `skills/<collection>/<name>/`. Each `.agents/skills/<name>` entry links directly to the corresponding shared skill, using OpenCode's Agent Skills discovery path without a separate platform-link directory. The existing install commands continue to use the shared collection.
+
+#### Install with the skills CLI
+
+Requires Node.js 22.20 or later:
+
+```bash
+# Install selected skills for OpenCode
+npx skills add tpc-pascal/skillsmith -a opencode
+
+# Install every skill at user level
+npx skills add tpc-pascal/skillsmith -a opencode -g -y
+```
+
+#### Install a whole collection
+
+Each collection installs as one unit through the repository installer:
+
+```bash
+npx -y github:tpc-pascal/skillsmith research
+```
+
+Omit the collection name to list them; append `-g` to install at user level.
+
+#### Verify
+
+```bash
+ls .opencode/skills             # project scope
+ls ~/.config/opencode/skills    # user scope
+```
+
+Each skill directory contains a `SKILL.md` with `name` and `description` frontmatter; OpenCode exposes skills through its `skill` tool.
+
+---
+
+**💡 Note**: This document is the complete guide for all repository conventions, commit rules, contribution workflows, and platform setup. It consolidates the content from the original `commit-conventions.md`, `repository-conventions.md`, and `opencode-setup.md` files.
