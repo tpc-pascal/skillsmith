@@ -1,46 +1,39 @@
-# Skillsmith Contribution Guide
+# Skillsmith Documentation Hub
 
 > **Version**: 1.0.0  
 > **Last Updated**: 2026-11-15  
-> **Source**: Combined from official [skillsmith](https://github.com/tpc-pascal/skillsmith) documentation  
-> **Purpose**: Single source of truth for all contribution rules and workflows
+> **Source**: Official [skillsmith](https://github.com/tpc-pascal/skillsmith) documentation  
+> **Purpose**: Single source of truth for repository conventions, commit rules, and contribution workflows
 
 ---
 
 ## 📌 TABLE OF CONTENTS
 
-1. [Overview](#1-overview)
-2. [Repository Structure](#2-repository-structure)
-3. [Skill File Structure](#3-skill-file-structure)
-4. [Third-Party Skills](#4-third-party-skills)
-5. [Commit Conventions](#5-commit-conventions)
-6. [Change Grouping Rules](#6-change-grouping-rules)
-7. [Delivery Workflow](#7-delivery-workflow)
-8. [Validation](#8-validation)
-9. [Workflow Examples](#9-workflow-examples)
-10. [Quick Reference](#10-quick-reference)
+1. [Repository Conventions](#1-repository-conventions)
+2. [Commit Conventions](#2-commit-conventions)
+3. [Contribution Workflow](#3-contribution-workflow)
+4. [Repository Structure](#4-repository-structure)
+5. [Skill File Structure](#5-skill-file-structure)
+6. [Third-Party Skills Management](#6-third-party-skills-management)
+7. [Change Grouping Rules](#7-change-grouping-rules)
+8. [Delivery Workflow](#8-delivery-workflow)
+9. [Validation Requirements](#9-validation-requirements)
+10. [Workflow Examples](#10-workflow-examples)
+11. [Quick Reference](#11-quick-reference)
+12. [Appendices](#12-appendices)
 
 ---
 
-## 1. Overview
+## 1. Repository Conventions
 
-### 1.1 Purpose
-Skillsmith is a collection of **self-contained, independently installable agent skills** organized into collections. Each collection contains multiple skills that can be installed and used independently.
+*This section is the single source of truth for the repository's structure, skill content, third-party skill handling, and validation rules.*
 
-### 1.2 Key Principles
-- **Self-contained**: Each collection and skill installs independently
-- **Session-scoped third-party skills**: Fetched per session via `scripts/fetch-session.sh`, never installed permanently
-- **Local-first**: Local CLIs for local files; web sources and APIs require connectivity
-- **OpenCode discovery**: Skills are discovered through `.agents/skills/` symlinks
+### 1.1 Repository Structure
 
-### 1.3 Current Collections
-| Collection | Skills | Purpose |
-|------------|--------|---------|
-| `research` | orchestrator, doc, media, web, paper | Research workflows |
-
----
-
-## 2. Repository Structure
+- Keep all skill collections under `skills/<collection>/<skill>/`; do not add collections at the repository root.
+- Keep each collection self-contained and independently installable. Do not add cross-collection routing, references, or install dependencies.
+- Treat the files under `skills/` as canonical skill content. OpenCode discovers them through `.agents/skills/` symlinks; keep those links aligned with their source skills and do not duplicate content.
+- Document collection skills and installation in that collection's `README.md`.
 
 ```text
 .
@@ -59,13 +52,176 @@ Skillsmith is a collection of **self-contained, independently installable agent 
 │   ├── install.sh          # Collection installation
 │   └── sync-licenses.py    # License synchronization
 ├── docs/                   # Documentation
-│   ├── commit-conventions.md    # Commit rules
-│   ├── repository-conventions.md # Repository rules
-│   └── opencode-setup.md        # OpenCode setup guide
+│   └── contribution-guide.md # This file
 ├── .github/
 │   └── workflows/          # CI/CD workflows
-│       ├── ci.yml          # Lint & test
-│       └── release.yml     # Release automation
+├── AGENTS.md              # Agent instructions
+├── CONTRIBUTING.md        # Contribution guide
+├── CHANGELOG.md           # Release notes
+├── README.md              # Repository overview
+└── package.json           # npm configuration
+```
+
+### 1.2 Skill File Structure
+
+Every `SKILL.md` follows this order:
+
+1. YAML frontmatter containing `name`, `description`, `license`, and `metadata`.
+2. `# H1` and one introductory paragraph.
+3. `##` sections in this order: routing table; specialist section, if needed; `Rules`; `Third-party skills (fetched per session)`, if needed; `references` or `scripts`, if needed; combined flows.
+
+Keep `SKILL.md` lean because it loads in every session: aim for about 45 lines or 2,500 characters, and never exceed 70 lines or 4,000 characters. Put supporting detail in `references/` for on-demand reading. The smoke check validates the hard limits, section order, heading vocabulary, and table column consistency.
+
+Reference files and READMEs use `# H1`, an introduction, then `##` sections. The root `README.md` is the exception and opens with the repository logo.
+
+### 1.3 Third-Party Skills
+
+- Fetch optional upstream skills per session with `scripts/fetch-session.sh`; do not install them permanently or commit fetched files. Keep their source URL and commit-SHA pin in the fetch mapping.
+- Use `./scripts/fetch-session.sh --list` to list integrations, `./scripts/fetch-session.sh --skill <skill-name>` for one skill, and `./scripts/fetch-session.sh --all` for all configured skills.
+- Preserve and document upstream license declarations. Review applicable terms before using or redistributing third-party material.
+
+### 1.4 Adapted Skills
+
+- Rewrite skills adapted from other collections into this repository's template. Do not copy upstream skill text verbatim.
+- Record the upstream repository and commit in frontmatter metadata as `origin: <repo>@<commit>`, and include a distilled-from note and upstream license in the relevant reference.
+- Make adapted skills self-contained; they must not require the upstream repository at runtime.
+
+### 1.5 Local-First Behavior
+
+- Prefer local tools for local files, and state when required CLIs, models, or data must already be installed or cached.
+- URLs, search, APIs, third-party downloads, and external renderers require connectivity. Do not describe them as offline-capable without a real local cache or backend.
+- Do not automatically send input to external services as a fallback. Require explicit selection of network backends and disclose that dependency.
+
+### 1.6 Validation
+
+Run `bash scripts/smoke.sh` before committing or opening a pull request. It checks shell syntax, skill frontmatter and placement, platform discovery links, secrets, markdown structure, and skill template constraints.
+
+When checking upstream license declarations, run `python3 scripts/sync-licenses.py --check` after installing the script's documented YAML dependency.
+
+### 1.7 Adding a Collection
+
+1. Add each skill under `skills/<collection>/<skill>/SKILL.md` with `name`, `description`, and `license` frontmatter.
+2. Add the collection and skills to the root and collection READMEs, and keep platform discovery links in sync.
+3. Run the smoke check and submit the changes according to [CONTRIBUTING.md](../CONTRIBUTING.md).
+
+---
+
+## 2. Commit Conventions
+
+*This section is the single source of truth for commit messages, change grouping, delivery paths, and releases in Skillsmith.*
+
+### 2.1 Commit Messages
+
+Use Conventional Commits with a concise, specific subject:
+
+```text
+<type>(<scope>): <imperative summary>
+```
+
+Examples:
+
+```text
+feat(research:doc:docx): add anthropics/skills session skill
+chore(release): consolidate prior releases into v0.2.0
+```
+
+Use the type and scope that describe the actual change. For a third-party session skill, use:
+
+```text
+feat(<collection>:<folder>:<third-party-skill>): add <source>/<skill> session skill
+```
+
+Every commit must include a descriptive body with all four sections:
+
+```text
+Work done:
+- Describe the concrete changes made.
+
+Effect:
+- Explain the resulting behavior or repository state.
+
+Benefits:
+- Explain the practical benefit.
+
+Files changed: path/to/file, path/to/another-file
+```
+
+Keep each section accurate and specific. `Files changed` must name every file changed by that commit and no files that were not changed.
+
+When Pascal Automation Agent materially assists with a commit, include this co-author trailer:
+
+```text
+Co-authored-by: pascal-automation-agent[bot] <348848148+pascal-automation-agent[bot]@users.noreply.github.com>
+```
+
+Never add `Co-authored-by: Copilot`.
+
+### 2.2 Change Grouping
+
+- Keep each logically independent change in its own commit; do not enforce a fixed total commit count.
+- Add each third-party session skill in exactly one `feat` commit, in the order the skills are introduced. A commit must not add multiple third-party skills.
+- Include the skill's pinned fetch mapping, pin when first using an upstream, relevant catalog and usage documentation, and `CHANGELOG.md` entry in that skill's commit.
+- Fold a correction into the related change when it is tightly coupled, rather than leaving an unnecessary standalone fix commit.
+- Do not rewrite published history unless explicitly requested.
+
+### 2.3 Delivery Workflow
+
+- Maintainer-authored feature commits may be committed directly to `main`.
+- External contributions are submitted as pull requests, following [CONTRIBUTING.md](../CONTRIBUTING.md).
+- Upstream pin and license inventory updates are handled by their existing workflows and reviewed through the pull requests they create. Do not bypass these workflows with manual updates.
+- Prepare a release through a pull request that updates the changelog; after it is merged, run `scripts/release.sh vX.Y.Z` from a clean, up-to-date `main`.
+
+### 2.4 Releases
+
+- Use Semantic Versioning. Release versions apply to the repository, not to an individual collection or skill; do not create collection- or skill-level tags.
+- Bundle related changelog entries into project releases rather than cutting a release for every skill addition.
+- Move the entries being released from `[Unreleased]` into `## [vX.Y.Z] - YYYY-MM-DD`. The pushed tag starts the release workflow, which publishes notes from that changelog section.
+- Third-party skills remain fetched per session and are not redistributed. Preserve upstream license declarations and disclose applicable terms.
+
+---
+
+## 3. Contribution Workflow
+
+*This section outlines how to contribute to Skillsmith.*
+
+### 3.1 Quick Start
+
+1. Fork the repository and create a feature branch.
+2. Follow the [repository conventions](#1-repository-conventions) for the content being changed and the [commit conventions](#2-commit-conventions) for commits and releases.
+3. Follow the [validation requirements](#16-validation).
+4. Follow the [Code of Conduct](../CODE_OF_CONDUCT.md).
+5. Open a pull request describing the change.
+
+### 3.2 Workflow Symbols
+
+In workflow documentation, `▸` means hand off to the next step, `→` means the flow continues, and `[]` in a diagram describes a source/result type. These symbols are not report source labels.
+
+---
+
+## 4. Repository Structure
+
+*Visual representation of the repository layout.*
+
+```text
+.
+├── .agents/
+│   └── skills/              # Symlinks to skills/ for OpenCode discovery
+├── skills/
+│   └── <collection>/       # One skill collection (e.g., research/)
+│       └── <skill>/        # Each skill in its own subdirectory
+│           ├── SKILL.md    # Skill file (English)
+│           └── references/ # Reference material (optional)
+├── scripts/                # Automation scripts
+│   ├── fetch-session.sh    # Fetch third-party skills
+│   ├── smoke.sh            # Validation checks
+│   ├── bump-pins.sh        # Update third-party SHAs
+│   ├── release.sh          # Release automation
+│   ├── install.sh          # Collection installation
+│   └── sync-licenses.py    # License synchronization
+├── docs/                   # Documentation
+│   └── contribution-guide.md # This file
+├── .github/
+│   └── workflows/          # CI/CD workflows
 ├── AGENTS.md              # Agent instructions
 ├── CONTRIBUTING.md        # Contribution guide
 ├── CHANGELOG.md           # Release notes
@@ -75,9 +231,11 @@ Skillsmith is a collection of **self-contained, independently installable agent 
 
 ---
 
-## 3. Skill File Structure
+## 5. Skill File Structure
 
-### 3.1 SKILL.md Format
+*Every `SKILL.md` follows this exact structure.*
+
+### 5.1 SKILL.md Format
 
 Every `SKILL.md` **MUST** follow this exact structure:
 
@@ -122,12 +280,12 @@ Introductory paragraph explaining the skill's purpose.
 See [reference-file.md](./references/reference-file.md) for details.
 ```
 
-### 3.2 Constraints
+### 5.2 Constraints
 - **Maximum size**: 70 lines OR 4,000 characters (whichever comes first)
 - **Target size**: ~45 lines or ~2,500 characters
 - **Validation**: Run `bash scripts/smoke.sh` to check
 
-### 3.3 Section Order (MANDATORY)
+### 5.3 Section Order (MANDATORY)
 1. YAML frontmatter (`name`, `description`, `license`, `metadata`)
 2. `# H1` and introductory paragraph
 3. `## Routing table by input type` (if applicable)
@@ -140,12 +298,14 @@ See [reference-file.md](./references/reference-file.md) for details.
 
 ---
 
-## 4. Third-Party Skills
+## 6. Third-Party Skills Management
 
-### 4.1 Overview
+*This section explains how to manage third-party skills in Skillsmith.*
+
+### 6.1 Overview
 Third-party skills are **fetched per session** and **never installed permanently**. They are defined in `scripts/fetch-session.sh`.
 
-### 4.2 fetch-session.sh Structure
+### 6.2 fetch-session.sh Structure
 
 ```bash
 #!/usr/bin/env bash
@@ -171,7 +331,7 @@ docling|$DOCLING_URL|$DOCLING_SHA|docling/.agents/skills/docling
 # Usage: ./scripts/fetch-session.sh [--list|--all|--skill NAME] [--out DIR] [--licenses-out DIR]
 ```
 
-### 4.3 Adding a New Third-Party Skill
+### 6.3 Adding a New Third-Party Skill
 
 #### Step 1: Add URL/SHA Variables
 ```bash
@@ -198,7 +358,7 @@ bash scripts/fetch-session.sh --list
 bash scripts/fetch-session.sh --skill new-skill --out /tmp/test
 ```
 
-### 4.4 Current Third-Party Skills (as of 2026-11-15)
+### 6.4 Current Third-Party Skills (as of 2026-11-15)
 
 | Skill | Source | SHA | Path |
 |-------|--------|-----|------|
@@ -235,72 +395,11 @@ bash scripts/fetch-session.sh --skill new-skill --out /tmp/test
 
 ---
 
-## 5. Commit Conventions
+## 7. Change Grouping Rules
 
-### 5.1 Format
+*This section defines how to group changes in commits.*
 
-**MANDATORY**: Use [Conventional Commits](https://www.conventionalcommits.org/) format:
-
-```text
-<type>(<scope>): <imperative summary>
-
-Work done:
-- Describe the concrete changes made.
-
-Effect:
-- Explain the resulting behavior or repository state.
-
-Benefits:
-- Explain the practical benefit.
-
-Files changed: path/to/file
-Co-authored-by: pascal-automation-agent[bot] <348848148+pascal-automation-agent[bot]@users.noreply.github.com>
-```
-
-### 5.2 Type & Scope Examples
-
-| Type | Scope | Example | When to Use |
-|------|-------|---------|-------------|
-| `feat` | `research:doc:docx` | `feat(research:doc:docx): add anthropics/skills session skill` | Adding a new third-party skill |
-| `feat` | `research:web` | `feat(research:web:last30days): add guarded recent-discussion session skill` | Adding a new skill to web collection |
-| `chore` | `licenses` | `chore(licenses): sync third-party skill declarations` | Updating license information |
-| `chore` | `pins` | `chore(pins): bump third-party skill SHAs to upstream HEAD` | Updating SHA pins |
-| `chore` | `release` | `chore(release): consolidate prior releases into v0.2.0` | Release management |
-| `fix` | `research:doc` | `fix(research:doc): correct PDF processing path` | Bug fixes |
-
-### 5.3 Third-Party Skill Commit Format
-
-**MANDATORY**: For adding a third-party session skill:
-
-```text
-feat(<collection>:<folder>:<third-party-skill>): add <source>/<skill> session skill
-```
-
-**Examples**:
-```text
-feat(research:doc:docx): add anthropics/skills session skill
-feat(research:web:last30days): add guarded recent-discussion session skill
-feat(research:paper:sr-screener): add non-commercial screening session skill
-```
-
-### 5.4 Co-author Trailer
-
-**MANDATORY**: When Pascal Automation Agent assists:
-```text
-Co-authored-by: pascal-automation-agent[bot] <348848148+pascal-automation-agent[bot]@users.noreply.github.com>
-```
-
-**FORBIDDEN**:
-```text
-Co-Authored-By: Claude Code <noreply@anthropic.com>  # ❌ Wrong format
-Co-authored-by: Copilot  # ❌ Not allowed
-```
-
----
-
-## 6. Change Grouping Rules
-
-### 6.1 One Skill Per Commit
+### 7.1 One Skill Per Commit
 ✅ **DO**: Each third-party session skill in exactly one `feat` commit  
 ❌ **DON'T**: Add multiple third-party skills in one commit
 
@@ -315,7 +414,7 @@ git commit -m "feat(research:web:deep-research): add asgeirtj/system_prompts_lea
 git commit -m "feat: add docx, pdf, deep-research skills..."
 ```
 
-### 6.2 Include All Related Changes
+### 7.2 Include All Related Changes
 Each skill commit **MUST** include:
 - ✅ The skill's pinned fetch mapping (URL/SHA variables)
 - ✅ The skill's entry in TABLE
@@ -323,22 +422,24 @@ Each skill commit **MUST** include:
 - ✅ Relevant catalog and usage documentation updates
 - ✅ `CHANGELOG.md` entry for the skill
 
-### 6.3 Order of Introduction
+### 7.3 Order of Introduction
 - Add skills **in the order they are introduced**
 - Do not reorder commits after creation
 
-### 6.4 Folding Corrections
+### 7.4 Folding Corrections
 - **Fold** tightly coupled corrections into the related change
 - Do **not** leave unnecessary standalone fix commits
 
-### 6.5 History Rewriting
+### 7.5 History Rewriting
 - **DO NOT** rewrite published history unless explicitly requested
 
 ---
 
-## 7. Delivery Workflow
+## 8. Delivery Workflow
 
-### 7.1 For Maintainers (tpc-pascal)
+*This section outlines the delivery workflow for different types of contributors.*
+
+### 8.1 For Maintainers (tpc-pascal)
 
 ```mermaid
 graph TD
@@ -379,7 +480,7 @@ bash scripts/smoke.sh
 git push origin main
 ```
 
-### 7.2 For External Contributors
+### 8.2 For External Contributors
 
 ```mermaid
 graph TD
@@ -407,7 +508,7 @@ cd skillsmith
 git checkout -b feat/add-docx-pdf-deep-research
 
 # Make changes (3 separate commits)
-# ... (see section 5.3)
+# ... (see section 2.1)
 
 # Run validation
 bash scripts/smoke.sh
@@ -420,7 +521,7 @@ git push origin feat/add-docx-pdf-deep-research
 # To: tpc-pascal/skillsmith:main
 ```
 
-### 7.3 For Workflow Automations (CI/CD)
+### 8.3 For Workflow Automations (CI/CD)
 
 - Upstream pin and license inventory updates are **handled by existing workflows**
 - These create **automatic Pull Requests** (e.g., `#45`, `#48`)
@@ -434,9 +535,11 @@ chore(pins): bump third-party skill SHAs to upstream HEAD (#48)
 
 ---
 
-## 8. Validation
+## 9. Validation Requirements
 
-### 8.1 Before Committing
+*This section outlines the validation requirements before committing or opening a pull request.*
+
+### 9.1 Before Committing
 
 Run the **smoke check**:
 ```bash
@@ -453,7 +556,7 @@ bash scripts/smoke.sh
 7. ✅ Table column consistency
 8. ✅ Report contract and changelog
 
-### 8.2 Before Opening a Pull Request
+### 9.2 Before Opening a Pull Request
 
 1. **Run smoke.sh**:
    ```bash
@@ -472,7 +575,7 @@ bash scripts/smoke.sh
    bash scripts/fetch-session.sh --list
    ```
 
-### 8.3 Common Validation Errors
+### 9.3 Common Validation Errors
 
 | Error | Cause | Fix |
 |-------|-------|-----|
@@ -486,7 +589,7 @@ bash scripts/smoke.sh
 
 ---
 
-## 9. Workflow Examples
+## 10. Workflow Examples
 
 ### 9.1 Example 1: Adding a New Third-Party Skill (Maintainer)
 
@@ -580,7 +683,7 @@ git push origin main
 
 ---
 
-## 10. Quick Reference
+## 11. Quick Reference
 
 ### 10.1 Git Commands
 
@@ -612,15 +715,23 @@ git push origin main
 
 ---
 
-## 📚 References
+## 12. Appendices
+
+### 12.1 References
 
 1. [Skillsmith Repository](https://github.com/tpc-pascal/skillsmith)
-2. [Official Commit Conventions](docs/commit-conventions.md)
-3. [Official Repository Conventions](docs/repository-conventions.md)
-4. [Contributing Guide](CONTRIBUTING.md)
-5. [Conventional Commits](https://www.conventionalcommits.org/)
-6. [GitHub Co-authored Commits](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors)
+2. [Conventional Commits](https://www.conventionalcommits.org/)
+3. [GitHub Co-authored Commits](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors)
+4. [Semantic Versioning](https://semver.org/)
+5. [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+
+### 12.2 Related Files
+
+- [AGENTS.md](../AGENTS.md) - Agent instructions
+- [CONTRIBUTING.md](../CONTRIBUTING.md) - Contribution workflow
+- [CHANGELOG.md](../CHANGELOG.md) - Release notes
+- [README.md](../README.md) - Repository overview
 
 ---
 
-**💡 Note**: This guide is based on the official Skillsmith documentation. Always refer to the latest version of [commit-conventions.md](docs/commit-conventions.md) and [repository-conventions.md](docs/repository-conventions.md) for the most up-to-date rules.
+**💡 Note**: This document is the single source of truth for all repository conventions, commit rules, and contribution workflows. It consolidates the content from the original `commit-conventions.md` and `repository-conventions.md` files.
