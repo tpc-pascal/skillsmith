@@ -9,49 +9,49 @@ WATCH_URL="https://github.com/bradautomates/claude-video.git"
 WATCH_SHA="03ceb42f7fa2c4439aca01752118044baabffb8f"
 
 AGENTREACH_URL="https://github.com/Panniantong/Agent-Reach.git"
-AGENTREACH_SHA="7a38047acf26a729cbb27851e3cb81639da86b29"
+AGENTREACH_SHA="c70ae6da5d39bc90e09ad2ae0575ccc89f31e284"
 
 DOCLING_URL="https://github.com/docling-project/docling.git"
-DOCLING_SHA="07154cdc82500058ad9377bac92beed3de820458"
+DOCLING_SHA="440492ac0d0e14952b32dda28fede7495611c899"
 
 CITATION_URL="https://github.com/K-Dense-AI/scientific-agent-skills.git"
-CITATION_SHA="a25cf9ec00e2745d03f8704acf6f6919694ccd9a"
+CITATION_SHA="2d2065fb4520fa3f3f2bcf61cff26ec8b7eba4b5"
 
 SCHOLAR_URL="https://github.com/galaxy-dawn/claude-scholar.git"
 SCHOLAR_SHA="d394fb599ed9e6ea2212a9e6daa864345fe97a26"
 
 IMPECCABLE_URL="https://github.com/pbakaus/impeccable.git"
-IMPECCABLE_SHA="e89e3ada3e875a89ac2c5d33d11e65ebef6fe285"
+IMPECCABLE_SHA="2b86d9c07b97d4bed7de23583e1bd1e58dd2baae"
 
 TASTE_URL="https://github.com/Leonxlnx/taste-skill.git"
-TASTE_SHA="12af471f627f866411b4bd785b19646d3672784c"
+TASTE_SHA="f6b76575f949707b4e3c37cd86cb44b0b98643e8"
 
 ARCHIFY_URL="https://github.com/tt-a1i/archify.git"
-ARCHIFY_SHA="a4065941f12be7967436261d9934784e381d423c"
+ARCHIFY_SHA="a7ed6fd6657da90414831d1d42cf95987188750c"
 
 PPT_URL="https://github.com/hugohe3/ppt-master.git"
-PPT_SHA="5e8856be0da8e6bc85c4aa28acc614478f7b7137"
+PPT_SHA="3af3e8ef774c4d67ee57e1306d9256d08c9ee1bf"
 
 AVOIDAI_URL="https://github.com/conorbronsdon/avoid-ai-writing.git"
-AVOIDAI_SHA="933496df3bc0b06b3552f92a0be5f9f5e0f7f608"
+AVOIDAI_SHA="cc1d34319b4cc599bf503b80d35d7442bcde8047"
 
 HUMANIZER_URL="https://github.com/blader/humanizer.git"
-HUMANIZER_SHA="0ef9fe5bc3572734fd3ae6c448fe00a30cd5dcf0"
+HUMANIZER_SHA="b48c832f0f809c1b5658edbb838c2521b72f2413"
 
 AAS_URL="https://github.com/sickn33/agentic-awesome-skills.git"
-AAS_SHA="8aa412398110762dfbf7a88af66cadcf3985f64e"
+AAS_SHA="560b762c309d6b96315855d7968727d3bca7df20"
 
 LAST30_URL="https://github.com/mvanhorn/last30days-skill.git"
-LAST30_SHA="6894d44e088c449ecdd7246a18763fddba1ff805"
+LAST30_SHA="5718ae786c1738a70126681122e345bd6f0245d3"
 
 ARS_URL="https://github.com/Imbad0202/academic-research-skills.git"
-ARS_SHA="2e02041a3b821a160d98c9398f173c484ac759a8"
+ARS_SHA="23bd688bbc121da6ae98ec3c4d4a7675cefc4c83"
 
 AS_URL="https://github.com/anthropics/skills.git"
-AS_SHA="ca45fc496a3436251f191354091d557da31c15b5"
+AS_SHA="1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064"
 
 ASG_URL="https://github.com/asgeirtj/system_prompts_leaks.git"
-ASG_SHA="50a261ebbea7942fa98254a583d02434fdfd03e7"
+ASG_SHA="5102c93cb2e73fedfeaee0461a68926364fcd1dc"
 
 # name|url|sha|skill path in the repo
 TABLE='
